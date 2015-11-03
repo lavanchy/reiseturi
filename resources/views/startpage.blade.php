@@ -68,11 +68,11 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="images/startpage/wien1.jpg" alt="Chania" width="460" height="345">
+                            <img src="images/startpage/wien1.jpg" alt="Chania" width="760" height="345">
                         </div>
 
                         <div class="item">
-                            <img src="images/startpage/wien2.jpg" alt="Chania" width="460" height="345">
+                            <img src="images/startpage/wien2.jpg" alt="Chania" width="760" height="345">
                         </div>
 
                     </div>
@@ -118,6 +118,7 @@
                 </div>
             </div>
             <!--------------------------------------------- Ende Template-------------------------------------------------------------------->
+            <!--Zur Ergänzung die Kopie von w3schools-->
             <div class="col-md-6 panel panel-default">
 
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
