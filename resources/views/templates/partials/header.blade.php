@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>welcome to reisetouri.ch</title>
@@ -20,5 +19,40 @@
                     <div>
                         <ul class="nav navbar-nav"> <!--kleiner Nav-Bar, für den Fall-->
                             <li><a href="/WebEngProject/public/">Home</a></li>
-                            <li><a href="#">Profil</a></li>
+                            <li><a href="/WebEngProject/public/profile">Profil</a></li>
                         </ul>
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li>
+                                <!--Login Formular-->
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Login
+                                        <span class="caret"></span></button>
+                                    <a href="#"><ul class="dropdown-menu"></a>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pwd">Password:</label>
+                                            <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox"> Remember me</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </form>
+
+
+                        </ul>
+                    </div>
+
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+
+        </header>
+        
