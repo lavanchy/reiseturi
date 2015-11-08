@@ -20,6 +20,7 @@
                         <ul class="nav navbar-nav"> <!--kleiner Nav-Bar, für den Fall-->
                             <li><a href="/WebEngProject/public/">Home</a></li>
                             <li><a href="/WebEngProject/public/profile">Profil</a></li>
+                            <li><a href="/WebEngProject/public/registration">Registrieren</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
 

@@ -2,13 +2,13 @@
 @extends ('templates.default')
 <!--content -->
 @section ('content')
-<!--------------------------------------------- Start Template-------------------------------------------------------------------->
+
 <!--container-->
 
 <div class="container">
-@include ('templates.content.trip', ['tripName' => 'EuroTrip', 'pics' => ['Wien1', 'Wien2'], 'RID' => '1'])
-@include ('templates.content.trip', ['tripName' => 'EuroTrip', 'pics' => ['Wien1', 'Wien2'], 'RID' => '2'])
-@include ('templates.content.trip', ['tripName' => 'EuroTrip', 'pics' => ['Wien1', 'Wien2'], 'RID' => '3'])
+@include ('templates.content.trip', ['tripName' => 'Wien', 'pics' => ['Wien1', 'Wien2'], 'RID' => '1', 'describtion' => 'Text Name', 'data' => 'Daten Name', 'price' => '500$', 'booking' => 'jetzt Name buchen'])
+@include ('templates.content.trip', ['tripName' => 'Basel', 'pics' => ['Basel1', 'Basel2'], 'RID' => '2', 'describtion' => 'Text Name', 'data' => 'Daten Name', 'price' => '700$', 'booking' => 'jetzt Name buchen'])
+@include ('templates.content.trip', ['tripName' => 'Rom', 'pics' => ['Rom1', 'Rom2'], 'RID' => '3', 'describtion' => 'Text Name', 'data' => 'Daten Name', 'price' => '800$', 'booking' => 'jetzt Name buchen'])
 
 
 </div>

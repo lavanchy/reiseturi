@@ -1,3 +1,4 @@
+<!--------------------------------------------- Start Template-------------------------------------------------------------------->
 <div class="col-md-6 panel panel-default">
     <!--Cover Flow
             WICHTIG!!: data-target="myCarousel(x) greift auf die diversen Wrapper zu, am besten x=ID-->
@@ -32,28 +33,28 @@
     <!--Nav-Tabs, immer dieselben
     WICHTIG!!: href="variabel(x)" muss generiert werden, da sie immemr auf dieselbe Liste zugreift, am besten x=ID-->
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#beschreibung1">Beschreibung</a></li>
-        <li><a data-toggle="tab" href="#daten1">Daten</a></li>
-        <li><a data-toggle="tab" href="#preise1">Preise</a></li>
-        <li><a data-toggle="tab" href="#buchen1">Buchen</a></li>
+        <li class="active"><a data-toggle="tab" href="#beschreibung{{$RID}}">Beschreibung</a></li>
+        <li><a data-toggle="tab" href="#daten{{$RID}}">Daten</a></li>
+        <li><a data-toggle="tab" href="#preise{{$RID}}">Preise</a></li>
+        <li><a data-toggle="tab" href="#buchen{{$RID}}">Buchen</a></li>
     </ul>
 
     <div class="tab-content"> <!--Inhalt der Reise-->
-        <div id="beschreibung1" class="tab-pane fade in active">
+        <div id="beschreibung{{$RID}}" class="tab-pane fade in active">
             <h3>Beschreibung</h3>
-            <p>Ersetzen durch Beschreibungstext</p>
+            <p>{{$describtion}}</p>
         </div>
-        <div id="daten1" class="tab-pane fade">
+        <div id="daten{{$RID}}" class="tab-pane fade">
             <h3>Daten</h3>
-            <p>Ersetzen durch exakte Daten</p>
+            <p>{{$data}}</p>
         </div>
-        <div id="preise1" class="tab-pane fade">
+        <div id="preise{{$RID}}" class="tab-pane fade">
             <h3>Preise</h3>
-            <p>Ersetzen durch Preise</p>
+            <p>{{$price}}</p>
         </div>
-        <div id="buchen1" class="tab-pane fade">
+        <div id="buchen{{$RID}}" class="tab-pane fade">
             <h3>Buchen</h3>
-            <p>Ersetzen durch Buchungsfeld</p>
+            <p>{{$booking}}</p>
         </div>
     </div>
 </div>
