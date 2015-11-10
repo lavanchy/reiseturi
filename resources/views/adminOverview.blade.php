@@ -8,16 +8,24 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>Reisenummer</th>
+                <th>Destination</th>
+                <th>Abfahrtsort</th>
+                <th>Hotel</th>
+                <th>Hinfahrt</th>
+                <th>Rückfahrt</th>
+                <th>Buchungen</th>
+                <th>Status</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr class="success">
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+                <td>0001</td>
+                <td>Wien</td>
+                <td>Zürich</td>
+                <td>Bellvue</td>
+                <td>23.12.15</td>
             </tr>
             <tr class="danger">
                 <td>Mary</td>
