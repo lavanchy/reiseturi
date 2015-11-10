@@ -22,6 +22,7 @@
                             <li><a href="/WebEngProject/public/customerLogin">Profil</a></li>
                             <li><a href="/WebEngProject/public/registration">Registrieren</a></li>
                             <li><a href="/WebEngProject/public/adminOverview">AdminOverview</a></li>
+                            <li><a href="/WebEngProject/public/adminTripEdit">AdminTripEdit</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
 

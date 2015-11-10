@@ -39,11 +39,14 @@
                 </div>
                 <div class="form-group">
                     <label for="email">E-Mail</label>
-                    <input type="text" class="form-control" id="email" placeholder="E-Mail Adresse">
+                    <input type="email" class="form-control" id="email" placeholder="E-Mail Adresse">
                 </div>
-
-
-        </div></div>
+                <div class="form-group">
+                    <label for="numberOfPersons">Anzahl Personen</label>
+                    <input type="number" class="form-control" id="numberOfPersons" placeholder="Anzahl">
+                </div>
+        </div>
+    </div>
     <div class="col-md-4 panel panel-default">
         <div class="well">
             <h2>Zahlungsart</h2>
@@ -79,7 +82,7 @@
                 <label for="cardName">Name des Karteninhabers</label>
                 <input type="text" class="form-control" id="cardName" placeholder="Vollständiger Name des Karteninhabers">
             </div>
-            
+
         </div></div>
     <div class="col-md-4 panel panel-default">
         <div class="well">

@@ -31,6 +31,10 @@ Route::get('/adminOverview', function() {
     return view('adminOverview');
 });
 
+Route::get('/adminTripEdit', function() {
+    return view('adminTripEdit');
+});
+
 /*
  * Login & Registration
  * see https://laraveltips.wordpress.com/category/user-login-and-registration/
