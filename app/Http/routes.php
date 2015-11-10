@@ -23,6 +23,10 @@ Route::get('/registration', function () {
     return view('registration');
 });
 
+Route::get('/customerLogin', function () {
+    return view('customerLogin');
+});
+
 /*
  * Login & Registration
  * see https://laraveltips.wordpress.com/category/user-login-and-registration/

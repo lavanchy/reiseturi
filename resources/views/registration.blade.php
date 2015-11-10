@@ -6,7 +6,7 @@
     <div class="col-md-12 panel panel-default">
         <div class="panel panel-default">
             <div class="panel-heading">Reisedetails</div>
-            <div class="panel-body">Panel Content</div>
+            <div class="panel-body">HIER WERDEN DIE REISEDATEN REINKOPIERT PER LARAVEL, EIN SO TOLLES PROGRAMM!!</div>
         </div>
     </div>
     <div class="col-md-4 panel panel-default">
