@@ -15,7 +15,7 @@
                 <th>Hinfahrt</th>
                 <th>Rückfahrt</th>
                 <th>Buchungen</th>
-                
+
                 <th></th>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                 <td>Bellvue</td>
                 <td>23.12.15</td>
                 <td>24.12.15</td>
-                <td>13</td>
+                <td>10</td>
                 <td><button type="button" class="btn btn-default">Bearbeiten</button></td>
             </tr>
             <tr class="success">
@@ -46,9 +46,19 @@
                 <td>Zürich</td>
                 <td>Drei König</td>
                 <td>31.12.15</td>
-                <td>1.1.16</td>
+                <td>01.01.16</td>
                 <td>2</td>
                 <td><button type="button" class="btn btn-default">Bearbeiten</button></td>
+            </tr>
+            <tr class="default">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="button" class="btn btn-default">Neue Reise</button></td>
             </tr>
         </tbody>
     </table>
