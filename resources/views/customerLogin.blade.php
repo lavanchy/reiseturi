@@ -2,66 +2,155 @@
 @extends ('templates.default')
 <!--content -->
 @section ('content')
-<body>
 
-    <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">Persönliche Daten</div>
-            <div class="panel-body">
+<div class="container col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">Persönliche Daten</div>
+        <div class="panel-body">
 
 
-                <p>Die Daten sollen idealerweise mit assoc aus den Datenbanken entstehen</p>            
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Vorname</td>
-                            <td>John</td>
-                        </tr>
-                        <tr>
-                            <td>Nachname</td>
-                            <td>Hofer</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-default">Bearbeiten</button>
+            <p>Die Daten sollen idealerweise mit assoc aus den Datenbanken entstehen</p>            
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Vorname</td>
+                        <td>John</td>
+                    </tr>
+                    <tr>
+                        <td>Nachname</td>
+                        <td>Hofer</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-default">Bearbeiten</button>
 
-            </div>
         </div>
-        <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-heading">Zahlungsmethode</div>
-                <div class="panel-body">
-                    <div class="container">
-                        <h2>Dynamic Tabs</h2>
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                            <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-                            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-                            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
-                        </ul>
+    </div>
+</div>
+<div class="container col-md-8">
+    <div class="panel panel-default"> 
+        <div class="panel-heading">Buchungen</div>
+        <div class="panel-body">
 
-                        <div class="tab-content">
-                            <div id="home" class="tab-pane fade in active">
-                                <h3>HOME</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            </div>
-                            <div id="menu1" class="tab-pane fade">
-                                <h3>Menu 1</h3>
-                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            </div>
-                            <div id="menu2" class="tab-pane fade">
-                                <h3>Menu 2</h3>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                            </div>
-                            <div id="menu3" class="tab-pane fade">
-                                <h3>Menu 3</h3>
-                                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                            </div>
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#buchung1">Buchung 1</a></li>
+                <li><a data-toggle="tab" href="#buchung2">Buchung 2</a></li>
+                <li><a data-toggle="tab" href="#buchung3">Buchung 3</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="buchung1" class="tab-pane fade in active">
+                    <div class="panel panel-default col-md-6">
+                        <div class="panel-heading">Zahlungsmethoden</div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Zahlungsmethode</td>
+                                        <td>Visa</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kartennummer</td>
+                                        <td>**** 3333</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-danger">Danger</button>
                         </div>
                     </div>
+                    <div class="panel panel-default col-md-6">
+                        <div class="panel-heading">Reisedetails</div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Reiseziel</td>
+                                    <td>Wien</td>
+                                </tr>
+                                <tr>
+                                    <td>Startdatum</td>
+                                    <td>2.9.15</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                
                 </div>
+                <div id="buchung2" class="tab-pane fade">
+                    <div class="panel panel-default col-md-6">
+                        <div class="panel-heading">Zahlungsmethoden</div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Zahlungsmethode</td>
+                                        <td>Post</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kartennummer</td>
+                                        <td>**** 5555</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-danger">Danger</button>
+                        </div>
+                    </div>
+                    <div class="panel panel-default col-md-6">
+                        <div class="panel-heading">Reisedetails</div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Reiseziel</td>
+                                    <td>Rom</td>
+                                </tr>
+                                <tr>
+                                    <td>Startdatum</td>
+                                    <td>23.6.15</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> 
+                </div>
+                <div id="buchung3" class="tab-pane fade">
+                    <div class="panel panel-default col-md-6">
+                        <div class="panel-heading">Zahlungsmethoden</div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Zahlungsmethode</td>
+                                        <td>Mastercard</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kartennummer</td>
+                                        <td>**** 4444</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-danger">Danger</button>
+                        </div>
+                    </div>
+                    <div class="panel panel-default col-md-6">
+                        <div class="panel-heading">Reisedetails</div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Reiseziel</td>
+                                    <td>Basel</td>
+                                </tr>
+                                <tr>
+                                    <td>Startdatum</td>
+                                    <td>23.9.15</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div> 
+                </div>
+
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    @stop
+@stop
