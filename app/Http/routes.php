@@ -27,6 +27,10 @@ Route::get('/customerLogin', function () {
     return view('customerLogin');
 });
 
+Route::get('/adminOverview', function() {
+    return view('adminOverview');
+});
+
 /*
  * Login & Registration
  * see https://laraveltips.wordpress.com/category/user-login-and-registration/
@@ -43,5 +47,5 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
 Route::controllers([
-   'password' => 'Auth\PasswordController',
+    'password' => 'Auth\PasswordController',
 ]);

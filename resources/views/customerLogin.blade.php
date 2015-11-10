@@ -1,4 +1,4 @@
-<!-- Header -->
+<!-- Header/Footer -->
 @extends ('templates.default')
 <!--content -->
 @section ('content')
