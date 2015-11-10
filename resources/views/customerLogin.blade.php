@@ -31,6 +31,8 @@
     <div class="panel panel-default"> 
         <div class="panel-heading">Buchungen</div>
         <div class="panel-body">
+            <p>Auch hier die Daten aus der Datenbank</p>
+              
 
 
             <ul class="nav nav-tabs">
