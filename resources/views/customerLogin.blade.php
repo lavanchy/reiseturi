@@ -13,11 +13,11 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>Vorname</td>
+                        <th>Vorname</th>
                         <td>John</td>
                     </tr>
                     <tr>
-                        <td>Nachname</td>
+                        <th>Nachname</th>
                         <td>Hofer</td>
                     </tr>
                 </tbody>
@@ -58,7 +58,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="button" class="btn btn-danger">Danger</button>
+                            <button type="button" class="btn btn-danger">Reise stonieren</button>
                         </div>
                     </div>
                     <div class="panel panel-default col-md-6">
