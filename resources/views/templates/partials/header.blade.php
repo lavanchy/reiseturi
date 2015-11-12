@@ -11,7 +11,7 @@
     <body>
         <!--Kopfzeile mit Logo, kleinem Nav und Login Formular-->
         <header>
-            <nav class="navbar navbar-default navbar-fixed-top">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-static-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#"><img src="images/logo.jpg" height="30" width="35"/></a> <!--Logo-->
