@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('templates.default')
 
 @section('content')
 <!--  source , view  https://laraveltips.wordpress.com/category/forgot-password-form-and-controller/-->
@@ -61,3 +61,4 @@
 </div>
 
 @endsection
+@stop

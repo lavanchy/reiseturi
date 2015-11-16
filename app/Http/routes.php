@@ -35,19 +35,25 @@ Route::get('/adminTripEdit', function() {
     return view('adminTripEdit');
 });
 
+//Routes from Loic
+
+//reset Password
+Route::get('/auth/password', function(){
+    return view ('auth/password');
+});
 /*
  * Login & Registration
  * see https://laraveltips.wordpress.com/category/user-login-and-registration/
  * 09.11.15
  */
 // Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('/auth/login', 'Auth\AuthController@getLogin');
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+Route::get('/auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('/auth/register', 'Auth\AuthController@getRegister');
+Route::post('/auth/register', 'Auth\AuthController@postRegister');
 
 
 Route::controllers([

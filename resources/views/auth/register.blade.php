@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('templates.default')
 <!-- 
 tutorial chapter 4 https://laraveltips.wordpress.com/category/user-login-and-registration/
 source: https://gist.github.com/evercode1/44fc2185e3546d9609ef
@@ -103,3 +103,4 @@ source: https://gist.github.com/evercode1/44fc2185e3546d9609ef
 
 @endsection
 
+@stop

@@ -1,4 +1,5 @@
 <!--------------------------------------------- Start Template-------------------------------------------------------------------->
+
 <div class="col-md-6 panel panel-default">
     <!--Cover Flow
             WICHTIG!!: data-target="myCarousel(x) greift auf die diversen Wrapper zu, am besten x=ID-->
@@ -58,3 +59,4 @@
         </div>
     </div>
 </div>
+     
