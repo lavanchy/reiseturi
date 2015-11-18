@@ -54,7 +54,7 @@
                                     <div class="checkbox">
                                         <label><input type="checkbox"> Remember me</label>
                                     </div>
-                                    <button type="submit" class="btn btn-default">Submit</button>
+                                    <button type="submit" class="btn btn-default" href="{{url('adminTripEdit')}}">Submit</button>
                                     <a href="{{url('auth/password')}}">Forgot Your Password?</a>
                                 </form>
 
