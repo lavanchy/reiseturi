@@ -14,7 +14,7 @@ class Booking extends Model
       * @return type return user
       */
        public function users() {
-    return $this->belongsTo('App\User')->withTimestamps();
+    return $this->belongsTo('App\User','bookings_trip')->withTimestamps();
         
     }
      

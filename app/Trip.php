@@ -16,8 +16,13 @@ class Trip extends Model {
         return $this->hasMany('App\Bill');
     }
     
+    
+    /**
+     * tutorial https://laracasts.com/series/laravel-5-fundamentals/episodes/21
+     * @return type
+     */
     public function bookings() {
-        return $this->belongsToMany('App\Booking', 'Booking_trip')->withTimestamps();
+        return $this->belongsToMany('App\Booking', 'bookings_trip')->withTimestamps();
         
     }
 
