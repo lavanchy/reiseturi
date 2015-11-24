@@ -1,6 +1,6 @@
 <!--------------------------------------------- Start Template-------------------------------------------------------------------->
 
-<div class="col-md-6 panel panel-default">
+<div class="col-md-6 col-sm-12 panel panel-default">
     <!--Cover Flow
             WICHTIG!!: data-target="myCarousel(x) greift auf die diversen Wrapper zu, am besten x=ID-->
     <div id="myCarousel{{$RID}}" class="carousel slide" data-ride="carousel">
@@ -14,7 +14,7 @@
         <div class="carousel-inner" role="listbox">
             @foreach($pics as $pic)
             <div class="item @if($pic!=reset($pics)) active @endif">
-                <img src="images/startpage/{{$pic}}.jpg" alt="Chania" width="760" height="345">
+                <img src="images/startpage/{{$pic}}.jpg" alt="Chania" width="800" height="400">
             </div>
             @endforeach
         </div>
@@ -56,7 +56,79 @@
         <div id="buchen{{$RID}}" class="tab-pane fade">
             <h3>Buchen</h3>
             <p>{{$booking}}</p>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LoginModal{{$RID}}" style="margin-bottom: 15px">JETZT BUCHEN</button>
+
         </div>
     </div>
 </div>
-     
+
+
+<!-- Modal Valitadte Already customer -->
+<div id="LoginModal{{$RID}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Sind Sie bereits Kunde?</h4>
+            </div>
+            <div class="modal-body">
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <form class="form-horizontal" role="form" method="POST" action="/auth/login">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Password</label>
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember"> Remember Me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                Login
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Registrieren
+                            </button>
+
+                            <a href="/password/email">Forgot Your Password?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
