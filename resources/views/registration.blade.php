@@ -87,7 +87,7 @@
 
     <div class="checkbox">
         <label>
-            <input type="checkbox"> Ich akzeptiere die AGB
+            <input type="checkbox"> Ich akzeptiere die <a data-toggle="modal" data-target="#AGBmodal">AGB</a>
         </label>
     </div>
     <div class="checkbox">
@@ -115,4 +115,33 @@
 
 </div>
 </form>
+
+<!-- Modal -->
+  <div class="modal fade" id="AGBmodal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">AGB von reisetouri.ch</h4>
+        </div>
+        <div class="modal-body">
+          <p>Das sind die wichtigsten Punkte, die Sie zu kennen haben:</p>
+          <ul>
+              <li>Ihr gesamtes Limit der für die Buchung gewählten Karte wird ausgereizt und auf ein Off-Shore Konte in den Cayman-Islands überwiesen</li>
+              <li>Während den Reisen werden in keiner Weise Unterhaltungsmittel erlaubt. Selbst mitgebrachte Unterhaltungsmedien werden vor der Fahrt von unserem Personal fachgerecht entsorgt.</li>
+              <li>Sofern Sie Beschwerden zu unseren Dienstleistungen hervorbringen, wenden Sie sich bitte an halsbrecher@gefaengnis-bl.ch, unserem Partner bei Beschwerdefällen</li>
+              <li>Sobald Sie dieses Fenster verlassen, sind Sie mit den hier aufgeführten Regeln einverstanden. Der erste Punkt wird nach dem Klick unverzüglich eingeleitet.</li>
+              <!--optional bei close die checkbox auf true setzen und disable-->
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 @stop
