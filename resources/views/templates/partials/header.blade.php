@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
     </head>
 
     <body style="padding-top: 60px; padding-bottom: 30px">
@@ -27,7 +28,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <!--Login Formular-->
-                            <div class="dropdown">
+                            <div class="dropdown" style="margin-top: 10">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Login
                                     <span class="caret"></span></button>
                                 <a href="#"><ul class="dropdown-menu"></a>
@@ -41,8 +42,9 @@
                                     </ul>
                                 </div>
                                 @endif
-                                <form class="form" role="form" method="POST" action="/auth/login">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                <form class="form" style="margin: 10"role="form" method="POST" action="/auth/login">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label for="email">Email:</label>
                                         <input type="email" class="form-control" id="email" value="{{ old('email') }}" placeholder="Enter email">
@@ -57,6 +59,7 @@
                                     <button type="submit" class="btn btn-default" >Submit</button>
                                     <a href="{{url('auth/password')}}">Forgot Your Password?</a>
                                 </form>
+
 
 
                     </ul>
