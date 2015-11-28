@@ -19,18 +19,10 @@ class CreateBookings2Tbl extends Migration {
             $table->decimal('price');
             $table->string('paymentTyp');
             $table->string('paymentStatus');
-            $table->text('note');
+            $table->text('note');$table->integer('booking_id')->unsigned()->index();
+            $table->integer('trip_id')->unsigned()->index();
         });  //*/
 
-
-
-     
-        Schema::create('bookings_trip', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('booking_id')->unsigned()->index();
-            $table->integer('trip_id')->unsigned()->index();
-            $table->timestamps();
-        });
     }
 
     /**
@@ -40,7 +32,7 @@ class CreateBookings2Tbl extends Migration {
      */
     public function down() {
         Schema::drop('bookings');
-        Schema::drop('bookings_trip');
+       
     }
 
 }

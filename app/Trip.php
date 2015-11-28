@@ -22,8 +22,15 @@ class Trip extends Model {
      * @return type
      */
     public function bookings() {
-        return $this->belongsToMany('App\Booking', 'bookings_trip')->withTimestamps();
+        return $this->hasMany('App\Booking');
+        //return $this->belongsToMany('App\Booking', 'bookings_trip')->withTimestamps();
         
+    }
+    
+    public function numberOfPasanger(){
+        $amount =0;
+        // TODO get the amount of the pasanger outh of the booking
+        return $amount;
     }
 
 }

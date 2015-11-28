@@ -10,10 +10,10 @@
   | and give it the controller to call when that URI is requested.
   |
  */
-
+/*
 Route::get('/', function () {
     return view('startpage');
-});
+});*/
 
 Route::get('/profile', function () {
     return view('welcome');
@@ -55,7 +55,29 @@ Route::get('/auth/logout', 'Auth\AuthController@getLogout');
 Route::get('/auth/register', 'Auth\AuthController@getRegister');
 Route::post('/auth/register', 'Auth\AuthController@postRegister');
 
-
 Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
+
+//HomeC.
+Route::get('/', 'Auth\HomeController@getTrips');
+Route::get('/book/{id}', 'Auth\HomeController@bookTrip');
+Route::get('/login', 'Auth\HomeController@logIn');// solte es nicht eines der Auth von oben sein?
+
+
+//AdminOverViewC.
+Route::get('/admin', 'Auth\AdminOverviewController@getTrips');
+Route::get('/admin/newTrip', 'Auth\AdminOverviewController@newTrips');
+Route::get('/admin/editTrip/{id}', 'Auth\AdminOverviewController@editTrips');
+
+//AdminTripC.
+Route::post('/admin/save', 'Auth\AdminTripController@saveTrip');
+Route::post('/admin/printPasanger', 'Auth\AdminOverviewController@printPasangers');
+Route::post('/admin/bill', 'Auth\AdminOverviewController@createBill');
+Route::post('/admin/cloneTrip/{id}', 'Auth\AdminOverviewController@cloneTrip');
+
+//BookingC.
+Route::post('/bookS', 'Auth\BookingController@book');
+
+//HeadC.
+
