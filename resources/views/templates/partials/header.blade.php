@@ -28,6 +28,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <!--Login Formular-->
+                            @if (!Auth::check())
                             <div class="dropdown" style="margin-top: 10">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Login
                                     <span class="caret"></span></button>
@@ -43,15 +44,15 @@
                                 </div>
                                 @endif
 
-                                <form class="form" style="margin: 10"role="form" method="POST" action="/auth/login">
+                                <form class="form" style="margin: 10"role="form" method="POST" action="{{url('auth/login')}}">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
                                         <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email" value="{{ old('email') }}" placeholder="Enter email">
+                                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="pwd">Password:</label>
-                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                        <label for="password">Password:</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Enter password">
                                     </div>
                                     <div class="checkbox">
                                         <label><input type="checkbox"> Remember me</label>
@@ -64,7 +65,11 @@
 
                     </ul>
                 </div>
+                @else
+                <a href="{{url('auth/logout')}}"><button type="button" class="btn btn-default">Logout</button></a>
+                @endif
                 </li>
+                
                 </ul>
             </div>
         </div>

@@ -22,8 +22,7 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-    private $redirectTo = '/'; // Tutorial,
-    
+    protected $redirectPath = '/'; // Tutorial,
     /**
      * Create a new authentication controller instance.
      *
@@ -73,4 +72,6 @@ class AuthController extends Controller
             'email' => $data['email'],
         ]);
     }
+    
+    
 }

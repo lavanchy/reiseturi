@@ -86,7 +86,7 @@
                 </div>
                 @endif
 
-                <form class="form-horizontal" role="form" method="POST" action="/auth/login">
+                <form class="form-horizontal" role="form" method="POST" action="{{url('auth/login')}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group">
@@ -122,7 +122,7 @@
                                 Registrieren
                             </button>
 
-                            <a href="/password/email">Forgot Your Password?</a>
+                            <a href="{{url('password/email')}}">Forgot Your Password?</a>
                         </div>
                     </div>
                 </form>

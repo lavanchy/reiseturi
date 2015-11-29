@@ -23,7 +23,7 @@ source: https://gist.github.com/evercode1/bc2cfc318bb49313b47f
             </div>
             @endif
 
-            <form class="form-horizontal" role="form" method="POST" action="/auth/login">
+            <form class="form-horizontal" role="form" method="POST" action="{{url('auth/login')}}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group">
@@ -56,7 +56,7 @@ source: https://gist.github.com/evercode1/bc2cfc318bb49313b47f
                             Login
                         </button>
 
-                        <a href="/password/email">Forgot Your Password?</a>
+                        <a href="{{url('auth/password')}}">Forgot Your Password?</a>
                     </div>
                 </div>
             </form>

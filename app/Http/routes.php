@@ -60,24 +60,28 @@ Route::controllers([
 ]);
 
 //HomeC.
-Route::get('/', 'Auth\HomeController@getTrips');
-Route::get('/book/{id}', 'Auth\HomeController@bookTrip');
-Route::get('/login', 'Auth\HomeController@logIn');// solte es nicht eines der Auth von oben sein?
+//CK: Verzeichnis geändert
+Route::get('/', 'HomeController@getTrips');
+Route::get('/book/{id}', 'HomeController@bookTrip');
+Route::get('/login', 'HomeController@logIn');// solte es nicht eines der Auth von oben sein?
 
 
 //AdminOverViewC.
-Route::get('/admin', 'Auth\AdminOverviewController@getTrips');
-Route::get('/admin/newTrip', 'Auth\AdminOverviewController@newTrips');
-Route::get('/admin/editTrip/{id}', 'Auth\AdminOverviewController@editTrips');
+//CK: Verzeichnis geändert
+Route::get('/admin', 'AdminOverviewController@getTrips');
+Route::get('/admin/newTrip', 'AdminOverviewController@newTrips');
+Route::get('/admin/editTrip/{id}', 'AdminOverviewController@editTrips');
 
 //AdminTripC.
-Route::post('/admin/save', 'Auth\AdminTripController@saveTrip');
-Route::post('/admin/printPasanger', 'Auth\AdminOverviewController@printPasangers');
-Route::post('/admin/bill', 'Auth\AdminOverviewController@createBill');
-Route::post('/admin/cloneTrip/{id}', 'Auth\AdminOverviewController@cloneTrip');
+//CK: Verzeichnis geändert
+Route::post('/admin/save', 'AdminTripController@saveTrip');
+Route::post('/admin/printPasanger', 'AdminOverviewController@printPasangers');
+Route::post('/admin/bill', 'AdminOverviewController@createBill');
+Route::post('/admin/cloneTrip/{id}', 'AdminOverviewController@cloneTrip');
 
 //BookingC.
-Route::post('/bookS', 'Auth\BookingController@book');
+//CK: Verzeichnis geändert
+Route::post('/books', 'BookingController@book');
 
 //HeadC.
 

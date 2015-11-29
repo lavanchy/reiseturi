@@ -24,11 +24,11 @@ class AdminOverviewController extends Controller
         return view ('startpage', compact($trips));
     }
     public function newTrips(){
-        return view ('adnibTripEdit');
+        return view ('adminTripEdit');
     }
         public function editTrips($id){
             $trip = \App\Trip::findOrDie($id);
-        return view ('adnibTripEdit', compact($trip));
+        return view ('adminTripEdit', compact($trip));
     }
     
   

@@ -24,16 +24,17 @@ class AdminTripController extends Controller
     
     public function createBill(){
         //Todo get input
-        $attributs ="";
-        App\Bill::Create($attributs);
+        //CK Rechtschreibung korrigert
+        $attributes ="";
+        App\Bill::Create($attributes);
         
     }
     
     
     public function cloneTrip($id){
-   
-        $attributs = \App\Trip::find($id);
-        return view ('adminTripEdit', compact($attributs)); 
+        //CK Rechtschreibung korrigert
+        $attributes = \App\Trip::find($id);
+        return view ('adminTripEdit', compact($attributes)); 
         
     }
 }
