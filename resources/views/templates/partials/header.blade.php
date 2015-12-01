@@ -1,3 +1,4 @@
+<!-- der Header wird immer am Anfang angezeigt, dieser verändert sich je nach Login-Status in Form von anderen Links, die angezeigt werden-->
 <html lang="en">
     <head>
         <title>welcome to reisetouri.ch</title>
@@ -10,7 +11,8 @@
     </head>
 
     <body style="padding-top: 60px; padding-bottom: 30px">
-        <!--Kopfzeile mit Logo, kleinem Nav und Login Formular-->
+        <!--Kopfzeile mit Logo, kleinem Nav und Login Formular
+            TODO Die Links den verschiednen Login-Status anpassen-->
 
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -18,7 +20,7 @@
                     <a class="navbar-brand" href="{{url('/')}}"><img src="images/logo.jpg" height="30" width="35"/></a> <!--Logo-->
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav"> <!--kleiner Nav-Bar, für den Fall-->
+                    <ul class="nav navbar-nav"> <!--zu schnellen Übersichtszwecken beim Testing wird dies folgendermassen angezeigt-->
                         <li><a href="{{url('/')}}">Home</a></li>
                         <li><a href="{{url('customerLogin')}}">Profil</a></li>
                         <li><a href="{{url('registration')}}">Registrieren</a></li>
@@ -27,7 +29,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <!--Login Formular-->
+                            <!--Login Formular mit Dropdown. bei erfolgreichem Einloggen wird der Logout-Button angezeigt-->
                             @if (!Auth::check())
                             <div class="dropdown" style="margin-top: 10">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Login

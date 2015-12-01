@@ -1,16 +1,22 @@
+<!--Hier kann der eingeloggte Admin alle Reisen, die er bei AdminOverview ausgewählt hat, bearbeiten. Zudem kann er neue Reisen erstellen.-->
 <!-- Header/Footer -->
 @extends ('templates.default')
 <!--content -->
 @section ('content')
 <div class="container">
+    <!--Das erste Tab soll generiert werden, d.h. für jede Reise, die geöffnet wurde, soll ein neuer Tab entstehen.
+        Der zweite Tab soll auf die AdminOverview-Seite führe, damit dort eine weitere bereits bestehende oder eine neue Reise erstellt werden kann-->
     <h2>Reisen bearbeiten</h2>
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#trip">Trip</a></li>
-        <li><a data-toggle="tab" href="{{url('adminOverview')}}">+</a></li>
+        <li class="active"><a data-toggle="tab" href="#trip">Trip</a></li> <!--Erster Tab-->
+        <li><a data-toggle="tab" href="{{url('adminOverview')}}">+</a></li><!--Zweiter Tab -->
     </ul>
 
     <div class="tab-content">
         <div id="trip" class="tab-pane fade in active">
+            <!--Hier wird der Reisebeschrieb eingefügt, entweder manuell vom Nutzer bei Neuerstellung oder
+            durch Abruf aus der Datenbank bei Bearbeitung oder Klonen
+            @param RID-->
             <div class="col-md-4 well">
                 <h2>Reisebeschrieb</h2>
                 <form role="form">
@@ -43,6 +49,9 @@
                 </form>
 
             </div>
+            <!--Hier wird die Passagierliste angezeigt. Diese ist bei einer neuen Reise leer, bei bereits erstellter Reise (bearbeiten,klonen) wird DB abgerufen.
+            AUsserdem können Teilnehmer gelöscht werden.
+            @param BID-->
             <div class="col-md-8 well">
                 <h2>Passagierliste</h2>
                 <table class="table table-striped">
@@ -80,6 +89,9 @@
                     </tbody>
                 </table>
             </div>
+            <!--Hier werden die Ausgaben manuell durch den Admin eingefügt, es werden bei Klonen nie Daten übernommen, bei Bearbeitung werden sie von DB abgerufen.
+            Ausserdem könnne hier Zahlungen hinzugefügt werden, indem beim Button-Klick ein Modal mit einem Formular erscheint.
+            @param BillID--> 
             <div id="ausgaben" class="col-md-8 well">
                 <h2>Ausgaben</h2>
                 <table class="table table-striped">
@@ -118,6 +130,7 @@
                             <td>Reinigung</td>
                             <td><span class="glyphicon glyphicon-remove"></span></td>
                         </tr>
+                        <!--Hier wird die Summe der Ausgaben ausgegeben-->
                         <tr>
                             <th>Total</th>
                             <th></th>
@@ -127,13 +140,13 @@
                         </tr>
                     </tbody>
                 </table>
-                <!-- Trigger the modal with a button -->
+                <!-- Der Button für Modal, um Zahlung hinzuzufügen -->
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#BillModal">Zahlung hinzüfügen</button>
                 <!-- Zahlung Modal -->
                 <div class="modal fade" id="BillModal" role="dialog">
                     <div class="modal-dialog">
 
-                        <!-- Modal content-->
+                        <!-- Formular, um Zahlung hinzuzufügen-->
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -169,6 +182,9 @@
                     </div>
                 </div>
             </div>
+            <!-- Hier werden die Einnahmen und die Ausgaben zusammengeführt.
+            Die Ausgaben werden als Summe ausgegeben
+            Die Einnahmen berechnet sich aus Preis*AnzahlBuchungen-->
             <div class="col-md-4 well">
                 <h2>Bilanz</h2>
                 <table class="table">
@@ -190,6 +206,10 @@
                     </tfoot>
                 </table>
             </div>
+            <!-- Hier werden die Optionen für den Admin aufgezählt
+            Drucken erzeugt ein PDF mit der gesamten Reiseübersicht
+            Reise absagen löscht die RID
+            Reise klonen kopiert den Reisebeschrieb in eine neue Reise-->
             <div class="col-md-4 well">
                 <h2>Optionen</h2>
                 <button type="button" class="btn btn-info">Drucken</button>

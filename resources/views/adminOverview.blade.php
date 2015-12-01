@@ -1,6 +1,9 @@
+<!--Dies ist die Admin Übersicht aller Reisen. Sie wird nur dem Admin angezeigt. Hier werden alle Reisen in einer Tabelle angezeigt, 
+der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeitung findet bei AdminTripEdit statt.-->
 <!-- Header/Footer -->
 @extends ('templates.default')
-<!--content -->
+<!--Die Tabellen werden mit assoc erstellt
+    @param RID-->
 @section ('content')
 <div class="container">
     <h2>Admin Übersicht</h2>
@@ -50,6 +53,7 @@
                 <td>2</td>
                 <td><button type="button" class="btn btn-default">Bearbeiten</button></td>
             </tr>
+<!--Diese Tabelle zeigt nur an, dass eine neue Reise erstellt werden soll.-->
             <tr class="default">
                 <td></td>
                 <td></td>

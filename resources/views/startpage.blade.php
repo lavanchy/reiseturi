@@ -1,3 +1,4 @@
+<!-- Startseite. Hier werden die Trips von content.trip angezeigt.-->
 <!-- Header -->
 @extends ('templates.default')
 <!--content -->

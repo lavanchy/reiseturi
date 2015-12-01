@@ -1,4 +1,5 @@
-
+<!-- Hier wird das Formular für die persönlichen Daten aufgeführt. Es wurde in eine separate View gepackt, 
+weil es in mehr als einer View benötigt wird. Bei bereits registrierten User wird das Feld automatisch ausgefüllt-->
 
     <h2>Personal Data</h2>
     

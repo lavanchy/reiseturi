@@ -1,4 +1,4 @@
-<!--------------------------------------------- Start Template-------------------------------------------------------------------->
+<!--------------------------------------------- Hier wird der Trip generiert für die Startseite-------------------------------------------------------------------->
 
 <div class="col-md-6 col-sm-12 panel panel-default">
     <!--Cover Flow
@@ -56,7 +56,8 @@
         <div id="buchen{{$RID}}" class="tab-pane fade">
             <h3>Buchen</h3>
             <p>{{$booking}}</p>
-            <!-- Trigger the modal with a button -->
+            <!-- Buchungsbutton, falls noch nicht eingeloggt wird eine Abfrage gestartet
+                 TODO auth-check einfügen, damit er direkt zur Registration weitergeleitet wird-->
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LoginModal{{$RID}}" style="margin-bottom: 15px">JETZT BUCHEN</button>
 
         </div>
@@ -64,7 +65,7 @@
 </div>
 
 
-<!-- Modal Valitadte Already customer -->
+<!-- Model für das Aufploppen der Login-Abfrage beim Drücken des Booking-Buttons -->
 <div id="LoginModal{{$RID}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
