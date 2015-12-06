@@ -1,7 +1,7 @@
 <!--Hier kann sich der Kunde für eine Reise registrieren. Wenn er bereits Kunde war, werden seine bisherigen Daten eingefügt.
     Er kann seine Zahlungsmethode bei jeder Buchung neu bestimmen.
     Falls der Kunde noch kein Login hat, muss er seine persönlichen Daten ein Passwort definieren, um seine Buchung abzuschliessen.
-    -->
+-->
 <!-- Header -->
 @extends ('templates.default')
 <!--content -->
@@ -9,6 +9,7 @@
 <!-- Hier werden die Reisedetails der gewählten Reise eingefügt
     @param RID
 -->
+
 <div class="col-md-12 panel panel-default">
     <div class="panel-heading">Reisedetails</div>
     <div class="panel-body">HIER WERDEN DIE REISEDATEN REINKOPIERT PER LARAVEL, EIN SO TOLLES PROGRAMM!!
@@ -48,84 +49,84 @@
     </div>
 </div>
 <!--START FORMULAR-->
-<form action="{{url('auth/register')}}" method="POST">
-    <!--Hier werden die persönlichen Daten erfasst und die Anzahl Personen eingegeben, welche bei der Buchung berücksichtigt werden. -->
-    <div class="col-md-4 well">
-    @include ('templates.user.personalData')
-        <div class="form-group">
-            <label for="numberOfPersons">Anzahl Personen</label>
-            <input type="number" class="form-control" id="numberOfPersons" placeholder="Anzahl">
-        </div>
-    </div>
-   <!-- Hier wird die Zahlungsart definiert -->
-    <div class="col-md-4 well">
-        <h2>Zahlungsart</h2>
-
-        <div class="form-group">
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Zahlungsart
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><div class="radio"><label><input type="radio" name="card" value="Mastercard" checked> Mastercard</label></div></li>
-                    <li><div class="radio"><label><input type="radio" name="card" value="Visa" checked> Visa</label></div></li>
-                    <li><div class="radio"><label><input type="radio" name="card" value="PostCard" checked> Post Card</label></div></li>
-                </ul>
+    <form action="{{url('auth/register')}}" method="POST">
+        <!--Hier werden die persönlichen Daten erfasst und die Anzahl Personen eingegeben, welche bei der Buchung berücksichtigt werden. -->
+        <div class="col-md-4 well">
+            @include ('templates.user.personalData')
+            <div class="form-group">
+                <label for="numberOfPersons">Anzahl Personen</label>
+                <input type="number" class="form-control" id="numberOfPersons" placeholder="Anzahl">
             </div>
         </div>
-        <div class="form-group">
-            <label for="cardnumber">Kartennummer</label>
-            <input type="text" class="form-control" id="cardnumber" placeholder="Kartennummer">
-        </div>
-        <div class="form-group">
-            <label for="securitycode">Security Code</label>
-            <input type="text" class="form-control" id="securitycode" placeholder="Security Code">
-        </div>
-        <div class="form-group">
-            <label for="month">Monat</label>
-            <input type="text" class="form-control" id="month" placeholder="Monat">
-        </div>
-        <div class="form-group">
-            <label for="year">Jahr</label>
-            <input type="text" class="form-control" id="year" placeholder="Jahr">
-        </div>
-        <div class="form-group">
-            <label for="cardName">Name des Karteninhabers</label>
-            <input type="text" class="form-control" id="cardName" placeholder="Vollständiger Name des Karteninhabers">
-        </div>
+        <!-- Hier wird die Zahlungsart definiert -->
+        <div class="col-md-4 well">
+            <h2>Zahlungsart</h2>
 
-    </div>
-   <!-- Hier werden die AGB's festgehalten, ausserdem kann hier das Passwort definiert werden.-->
-    <div class="col-md-4 well">
+            <div class="form-group">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Zahlungsart
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><div class="radio"><label><input type="radio" name="card" value="Mastercard" checked> Mastercard</label></div></li>
+                        <li><div class="radio"><label><input type="radio" name="card" value="Visa" checked> Visa</label></div></li>
+                        <li><div class="radio"><label><input type="radio" name="card" value="PostCard" checked> Post Card</label></div></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cardnumber">Kartennummer</label>
+                <input type="text" class="form-control" id="cardnumber" placeholder="Kartennummer">
+            </div>
+            <div class="form-group">
+                <label for="securitycode">Security Code</label>
+                <input type="text" class="form-control" id="securitycode" placeholder="Security Code">
+            </div>
+            <div class="form-group">
+                <label for="month">Monat</label>
+                <input type="text" class="form-control" id="month" placeholder="Monat">
+            </div>
+            <div class="form-group">
+                <label for="year">Jahr</label>
+                <input type="text" class="form-control" id="year" placeholder="Jahr">
+            </div>
+            <div class="form-group">
+                <label for="cardName">Name des Karteninhabers</label>
+                <input type="text" class="form-control" id="cardName" placeholder="Vollständiger Name des Karteninhabers">
+            </div>
 
-        <h2>AGB & Login</h2>
+        </div>
+        <!-- Hier werden die AGB's festgehalten, ausserdem kann hier das Passwort definiert werden.-->
+        <div class="col-md-4 well">
 
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Ich akzeptiere die <a data-toggle="modal" data-target="#AGBmodal">AGB</a>
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Ich möchte den Newsletter abonnieren
-            </label>
-        </div>
-        <div class="form-group">
-            <label for="password">Passwort</label>
-            <input type="password" class="form-control" id="password" placeholder="Passwort">
-        </div>
-        <div class="form-group">
-            <label for="confirmPassword">Passwort wiederholen</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Passwort">
-        </div>
-    </div>
-   <!-- Formularbuttons Submit und Reset -->
-    <div class="col-md-4 well">
+            <h2>AGB & Login</h2>
 
-        <button type="submit" class="btn btn-success">Reise buchen</button>
-        <button type="reset" class="btn btn-danger">Reset</button>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Ich akzeptiere die <a data-toggle="modal" data-target="#AGBmodal">AGB</a>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Ich möchte den Newsletter abonnieren
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" class="form-control" id="password" placeholder="Passwort">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Passwort wiederholen</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Passwort">
+            </div>
+        </div>
+        <!-- Formularbuttons Submit und Reset -->
+        <div class="col-md-4 well">
 
-    </div>
-</form>
+            <button type="submit" class="btn btn-success">Reise buchen</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+
+        </div>
+    </form>
 <!-- Ende Formular -->
 <!-- Modal zu AGB -->
 <div class="modal fade" id="AGBmodal" role="dialog">

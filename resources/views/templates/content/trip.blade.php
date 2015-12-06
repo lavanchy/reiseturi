@@ -43,7 +43,7 @@
     <div class="tab-content"> <!--Inhalt der Reise-->
         <div id="beschreibung{{$RID}}" class="tab-pane fade in active">
             <h3>Beschreibung</h3>
-            <p>{{$describtion}}</p>
+            <p>{{$description}}</p>
         </div>
         <div id="daten{{$RID}}" class="tab-pane fade">
             <h3>Daten</h3>
