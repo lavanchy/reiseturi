@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Trip;
 
 class AdminOverviewController extends Controller
 {
@@ -21,7 +22,7 @@ class AdminOverviewController extends Controller
     public function getTrips(){
         $trips = Trip::all();
         // //TODO including nr of pasanger
-        return view ('startpage', compact($trips));
+        return view ('adminOverview', ['trips'=>'hello world']);
     }
     public function newTrips(){
         return view ('adminTripEdit');

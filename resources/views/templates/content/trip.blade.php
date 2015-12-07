@@ -3,11 +3,11 @@
 <div class="col-md-6 col-sm-12 panel panel-default">
     <!--Cover Flow
             WICHTIG!!: data-target="myCarousel(x) greift auf die diversen Wrapper zu, am besten x=ID-->
-    <div id="myCarousel{{$RID}}" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel{{$trip->id}}" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel{{$RID}}" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel{{$RID}}" data-slide-to="1"></li>
+            <li data-target="#myCarousel{{$trip->id}}" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel{{$trip->id}}" data-slide-to="1"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -20,45 +20,45 @@
         </div>
 
         <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel{{$RID}}" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#myCarousel{{$trip->id}}" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#myCarousel{{$RID}}" role="button" data-slide="next">
+        <a class="right carousel-control" href="#myCarousel{{$trip->id}}" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
     </div>
 
-    <h2>{{$tripName}}</h2><!--Ersetzen durch JS-Titel-->
+    <h2>{{$trip->destination}}</h2><!--Ersetzen durch JS-Titel-->
     <!--Nav-Tabs, immer dieselben
     WICHTIG!!: href="variabel(x)" muss generiert werden, da sie immemr auf dieselbe Liste zugreift, am besten x=ID-->
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#beschreibung{{$RID}}">Beschreibung</a></li>
-        <li><a data-toggle="tab" href="#daten{{$RID}}">Daten</a></li>
-        <li><a data-toggle="tab" href="#preise{{$RID}}">Preise</a></li>
-        <li><a data-toggle="tab" href="#buchen{{$RID}}">Buchen</a></li>
+        <li class="active"><a data-toggle="tab" href="#beschreibung{{$trip->id}}">Beschreibung</a></li>
+        <li><a data-toggle="tab" href="#daten{{$trip->id}}">Daten</a></li>
+        <li><a data-toggle="tab" href="#preise{{$trip->id}}">Preise</a></li>
+        <li><a data-toggle="tab" href="#buchen{{$trip->id}}">Buchen</a></li>
     </ul>
 
     <div class="tab-content"> <!--Inhalt der Reise-->
-        <div id="beschreibung{{$RID}}" class="tab-pane fade in active">
+        <div id="beschreibung{{$trip->id}}" class="tab-pane fade in active">
             <h3>Beschreibung</h3>
-            <p>{{$description}}</p>
+            <p>{{$trip->description}}</p>
         </div>
-        <div id="daten{{$RID}}" class="tab-pane fade">
+        <div id="daten{{$trip->id}}" class="tab-pane fade">
             <h3>Daten</h3>
-            <p>{{$data}}</p>
+            <p>{{$trip->startDate}}</p>
+            <p>{{$trip->endDate}}</p>
         </div>
-        <div id="preise{{$RID}}" class="tab-pane fade">
+        <div id="preise{{$trip->id}}" class="tab-pane fade">
             <h3>Preise</h3>
-            <p>{{$price}}</p>
+            <p>{{$trip->preis}}</p>
         </div>
-        <div id="buchen{{$RID}}" class="tab-pane fade">
+        <div id="buchen{{$trip->id}}" class="tab-pane fade">
             <h3>Buchen</h3>
-            <p>{{$booking}}</p>
             <!-- Buchungsbutton, falls noch nicht eingeloggt wird eine Abfrage gestartet
                  TODO auth-check einfügen, damit er direkt zur Registration weitergeleitet wird-->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LoginModal{{$RID}}" style="margin-bottom: 15px">JETZT BUCHEN</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#LoginModal{{$trip->id}}" style="margin-bottom: 15px">JETZT BUCHEN</button>
 
         </div>
     </div>
@@ -66,7 +66,8 @@
 
 
 <!-- Model für das Aufploppen der Login-Abfrage beim Drücken des Booking-Buttons -->
-<div id="LoginModal{{$RID}}" class="modal fade" role="dialog">
+@if (!Auth::check())
+<div id="LoginModal{{$trip->id}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -133,3 +134,4 @@
 
     </div>
 </div>
+@endif

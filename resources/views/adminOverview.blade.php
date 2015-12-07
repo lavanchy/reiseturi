@@ -7,7 +7,6 @@ der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeit
 @section ('content')
 <div class="container">
     <h2>Admin Übersicht</h2>
-    <p>Die Tabellen werden dynamisch erstellt mit assoc. Die Farben könne verwendet werden, um den Status anzuzeigen, CSS-Technisch kein Problem.</p>
     <table class="table">
         <thead>
             <tr>
@@ -23,16 +22,18 @@ der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeit
             </tr>
         </thead>
         <tbody>
-            <tr class="info">
-                <td>0001</td>
-                <td>Wien</td>
-                <td>Zürich</td>
-                <td>Bellvue</td>
-                <td>23.12.15</td>
-                <td>24.12.15</td>
+            @foreach ($trips as $trip)
+            <tr class="info"><!--TODO anpassen an anzahl besucher-->
+                <td>{{$trip->id}}</td>
+                <td>{{$trip->destination}}</td>
+                <td>Zürich</td> <!--TODO, update database with Depart-->
+                <td>Bellvue</td> 
+                <td>{{$trip->startDate}}</td>
+                <td>{{$trip->endDate}}</td>
                 <td>10</td>
                 <td><button type="button" class="btn btn-default">Bearbeiten</button></td>
             </tr>
+            @endforeach
             <tr class="success">
                 <td>0002</td>
                 <td>Rom</td>

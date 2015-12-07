@@ -12,10 +12,10 @@ class HomeController extends Controller
 {
     //
     
-    
+    //CK habe compact($trips) durch ['trips'=>$trips] ersetzt, da sonst ein Einfügen in die View nicht möglich war.
     public function getTrips(){
         $trips = Trip::all();
-        return view ('startpage', compact($trips));
+    return view ('startpage', ['trips'=>$trips]);
     }
     
     public function bookTrip($id){
