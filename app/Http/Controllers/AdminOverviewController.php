@@ -19,10 +19,10 @@ class AdminOverviewController extends Controller
      */
     
     
-    public function getTrips(){
+    public function getAdminTrips(){
         $trips = Trip::all();
         // //TODO including nr of pasanger
-        return view ('adminOverview', ['trips'=>'hello world']);
+        return view ('adminOverview', ['trips'=>$trips]);
     }
     public function newTrips(){
         return view ('adminTripEdit');

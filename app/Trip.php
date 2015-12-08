@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model {
 
-    protected $fillabal = array('destination', 'startDate', 'endDate', 'preis', 'description');
+    protected $fillable = array('destination', 'startDate', 'endDate', 'preis', 'description');
 
     /**
      * returns alll Bills of the Trip

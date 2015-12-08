@@ -47,8 +47,9 @@
         </div>
         <div id="daten{{$trip->id}}" class="tab-pane fade">
             <h3>Daten</h3>
-            <p>{{$trip->startDate}}</p>
-            <p>{{$trip->endDate}}</p>
+            <p>Abfahrtsort: {{$trip->depart}}</p>
+            <p>Startdatum am: {{$trip->startDate}}</p>
+            <p>Enddatum am: {{$trip->endDate}}</p>
         </div>
         <div id="preise{{$trip->id}}" class="tab-pane fade">
             <h3>Preise</h3>

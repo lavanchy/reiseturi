@@ -27,10 +27,10 @@ Route::get('/customerLogin', function () {
     return view('customerLogin');
 });
 
-Route::get('/adminOverview', function() {
+/*Route::get('/adminOverview', function() {
     return view('adminOverview');
 });
-
+*/
 Route::get('/adminTripEdit', function() {
     return view('adminTripEdit');
 });
@@ -68,7 +68,7 @@ Route::get('/login', 'HomeController@logIn');// solte es nicht eines der Auth vo
 
 //AdminOverViewC.
 //CK: Verzeichnis geändert
-Route::get('/admin', 'AdminOverviewController@getTrips');
+Route::get('/adminOverview', 'AdminOverviewController@getAdminTrips');
 Route::get('/admin/newTrip', 'AdminOverviewController@newTrips');
 Route::get('/admin/editTrip/{id}', 'AdminOverviewController@editTrips');
 
