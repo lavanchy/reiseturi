@@ -77,11 +77,14 @@ Route::post('/admin/editTrip/{id}', 'AdminOverviewController@editTrips');
 Route::post('/admin/save', 'AdminTripController@saveTrip');
 Route::post('/admin/printPasanger', 'AdminTripController@printPasangers');
 Route::post('/admin/bill', 'AdminTripController@createBill');
-Route::post('/admin/cloneTrip/{id}', 'AdminTripController@cloneTrip');
+Route::post('/admin/deletBill/{id}', 'AdminTripController@deletBill');        
+Route::post('/admin/cloneTrip/{id}', 'AdminTripController@cloneTrip'); 
+Route::post('/admin/deletTrip/{id}', 'AdminTripController@deletTrip');  
 
 //BookingC.
 //CK: Verzeichnis geändert
 Route::post('/books', 'BookingController@book');
+Route::post('/deletBooks/{id}', 'BookingController@deletBooking');
 
 //HeadC.
 
