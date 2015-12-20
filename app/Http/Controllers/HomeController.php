@@ -20,10 +20,13 @@ class HomeController extends Controller
     
     public function bookTrip($id){
          $trip = Trip::findOrFail($id);
-         //TODO überprüfe die max anzahl an teilnehmer 
          $user = User::find(1); // TODOget curent user
-         //if ()
-             return view ('registration', compact($trip), compact($user));
+         if ($trip::freeSets(1)){
+              return view ('registration', compact($trip), compact($user));
+         }
+         return view ('startpage', ['trips'=>$trips]);// TODO SRY over boocked
+        
+        
     }
     
     public function logIn(){

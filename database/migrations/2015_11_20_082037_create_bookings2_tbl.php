@@ -13,12 +13,13 @@ class CreateBookings2Tbl extends Migration {
     public function up() {
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userID');
             $table->timestamps();
             $table->string('name');
             $table->integer('countPasanger');
             $table->decimal('price');
             $table->string('paymentTyp');
-            $table->string('paymentStatus');
+            $table->string('paymentStatus'); //userID
             $table->text('note');$table->integer('booking_id')->unsigned()->index();
             $table->integer('trip_id')->unsigned()->index();
         });  //*/

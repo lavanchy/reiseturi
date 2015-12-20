@@ -5,8 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model {
-
+    protected $pasanger;
     protected $fillable = array('destination', 'startDate', 'endDate', 'preis', 'description');
+    protected $bills;
+    protected $maxPasanger= 20;
 
     /**
      * returns alll Bills of the Trip
@@ -29,8 +31,37 @@ class Trip extends Model {
     
     public function numberOfPasanger(){
         $amount =0;
-        // TODO get the amount of the pasanger outh of the booking
+       // $trips = Trip::all();
+        $bookings =  Booking::all();
+        foreach ($bookings as $b){
+            if( $b->tripID == $this->id){
+             $amount += $b->countPasanger;  
+            }
+        }
+        
+        $this->pasanger =$bookings;
         return $amount;
+    }
+    
+     public function fethBills(){
+       
+       // $trips = Trip::all();
+        $bill = Bill::all();
+        foreach ($bill as $b){
+            if( $b->tripID == $this->id){
+                $this->bills->add($b); 
+            }
+        }
+        
+    }
+    
+     public function freeSets($requestetPlace) {
+       numberOfPasanger();
+       $requestetPlace += $this-->pasanger;
+         if ( $requestetPlace <= $this->maxPasanger){
+             return TRUE;
+         }
+         return FALSE;
     }
 
 }

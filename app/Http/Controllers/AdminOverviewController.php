@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Trip;
+use Requests;
 
-class AdminOverviewController extends Controller
-{
-    /*TODOS
+class AdminOverviewController extends Controller {
+    /* TODOS
      * 
      * 1. Auth controliren etc 
      * 2. Requests --> controlle der inputs
@@ -17,20 +17,24 @@ class AdminOverviewController extends Controller
      * 
      * 
      */
-    
-    
-    public function getAdminTrips(){
+
+    public function getAdminTrips() {
         $trips = Trip::all();
-        // //TODO including nr of pasanger
-        return view ('adminOverview', ['trips'=>$trips]);
+        foreach ($trips as $t){
+            $t::numberOfPasanger();
+        }
+        return view('adminOverview', ['trips' => $trips]);
     }
-    public function newTrips(){
-        return view ('adminTripEdit');
+
+    public function editTrips($id) {
+        $trip = Trip::findOrDie($id);
+        return view('adminTripEdit', compact($trip));
     }
-        public function editTrips($id){
-            $trip = \App\Trip::findOrDie($id);
-        return view ('adminTripEdit', compact($trip));
+
+    public function newTrips() {
+        return view('adminTripEdit');
     }
-    
-  
+
+
+
 }

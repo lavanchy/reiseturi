@@ -69,15 +69,15 @@ Route::get('/login', 'HomeController@logIn');// solte es nicht eines der Auth vo
 //AdminOverViewC.
 //CK: Verzeichnis geändert
 Route::get('/adminOverview', 'AdminOverviewController@getAdminTrips');
-Route::get('/admin/newTrip', 'AdminOverviewController@newTrips');
-Route::get('/admin/editTrip/{id}', 'AdminOverviewController@editTrips');
+Route::post('/admin/newTrip', 'AdminOverviewController@newTrips');
+Route::post('/admin/editTrip/{id}', 'AdminOverviewController@editTrips');
 
 //AdminTripC.
 //CK: Verzeichnis geändert
 Route::post('/admin/save', 'AdminTripController@saveTrip');
-Route::post('/admin/printPasanger', 'AdminOverviewController@printPasangers');
-Route::post('/admin/bill', 'AdminOverviewController@createBill');
-Route::post('/admin/cloneTrip/{id}', 'AdminOverviewController@cloneTrip');
+Route::post('/admin/printPasanger', 'AdminTripController@printPasangers');
+Route::post('/admin/bill', 'AdminTripController@createBill');
+Route::post('/admin/cloneTrip/{id}', 'AdminTripController@cloneTrip');
 
 //BookingC.
 //CK: Verzeichnis geändert
