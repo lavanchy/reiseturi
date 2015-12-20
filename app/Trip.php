@@ -5,10 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model {
-    protected $pasanger;
-    protected $fillable = array('destination', 'startDate', 'endDate', 'preis', 'description');
+    protected $passenger;
+    protected $fillable = array('destination', 'depart', 'startDate', 'endDate', 'preis', 'description');
     protected $bills;
-    protected $maxPasanger= 20;
+    protected $maxPassenger= 20;
 
     /**
      * returns alll Bills of the Trip
@@ -29,7 +29,7 @@ class Trip extends Model {
         
     }
     
-    public function numberOfPasanger(){
+    public function numberOfPassenger(){
         $amount =0;
        // $trips = Trip::all();
         $bookings =  Booking::all();
@@ -39,7 +39,7 @@ class Trip extends Model {
             }
         }
         
-        $this->pasanger =$bookings;
+        $this->passenger =$bookings;
         return $amount;
     }
     
@@ -56,9 +56,9 @@ class Trip extends Model {
     }
     
      public function freeSets($requestetPlace) {
-       numberOfPasanger();
+       numberOfPassenger();
        $requestetPlace += $this-->pasanger;
-         if ( $requestetPlace <= $this->maxPasanger){
+         if ( $requestetPlace <= $this->maxPassenger){
              return TRUE;
          }
          return FALSE;

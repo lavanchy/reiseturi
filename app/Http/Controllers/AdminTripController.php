@@ -4,18 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Trip;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Booking;
+use App\Bill;
+use Log;
+
 
 class AdminTripController extends Controller {
 
-    public function saveTrip() {
+    public function saveTrip(Request $request) {
         //TODO get post elements
-
-        $input = Requests::all();
-        $trip = Trip::updateOrCreate($input);
-        Trip::save();
-        return view('adminTripEdit', compact($trip));
+        $trip = new Trip;
+        //$input = $request->except('_token');
+        //$trip = Trip::updateOrCreate($input);
+        Log::debug($request);
+        $trip->destination = $request->destination;
+        $trip->depart = $request->depart;
+        $trip->startDate = $request->startDate;
+        $trip->endDate = $request->endDate;
+        $trip->preis = $request->preis;
+        $trip->description = $request->description;
+        if (!$trip->save()){
+            App::abort(500,'Error');
+        }
+        return redirect('admin/editTrip/'.$trip->id);
+        //return view('adminTripEdit', ['trip'=>$trip]);
     }
 
     public function printPasangers() {
@@ -29,7 +42,7 @@ class AdminTripController extends Controller {
         $b = App\Bill::updateOrCreate($input);
         $trip = Trip::find($b::trip_id);
 
-        return view('adminTripEdit', compact($trip));
+        return view('adminTripEdit', ['trip'=>$trip]);
     }
 
 //*/
@@ -51,7 +64,14 @@ class AdminTripController extends Controller {
         $tripID = $bill::trip_id;
         \App\Bill::destroy($id);
         $trip = Trip::findOrNew($tripID);
-        return view('adminTripEdit', compact($trip));
+        return view('adminTripEdit', ['trip'=>$trip]);
+    }
+    
+     public function editTrips($id) {
+        $trip = Trip::findOrFail($id);
+        $bookings = Booking::where('trip_id',$id)->get();
+        $bills = Bill::where('trip_id',$id)->get();
+        return view('adminTripEdit', ['trip'=>$trip, 'bookings'=>$bookings, 'bills'=>$bills]);
     }
 
 }

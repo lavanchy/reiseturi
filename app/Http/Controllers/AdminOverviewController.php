@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Trip;
-use Requests;
+/*use Requests;*/
 
 class AdminOverviewController extends Controller {
     /* TODOS
@@ -20,16 +20,13 @@ class AdminOverviewController extends Controller {
 
     public function getAdminTrips() {
         $trips = Trip::all();
-        foreach ($trips as $t){
-            $t::numberOfPasanger();
-        }
+        /*foreach ($trips as $t){
+            $t::numberOfPassenger();
+        }*/
         return view('adminOverview', ['trips' => $trips]);
     }
 
-    public function editTrips($id) {
-        $trip = Trip::findOrDie($id);
-        return view('adminTripEdit', compact($trip));
-    }
+   
 
     public function newTrips() {
         return view('adminTripEdit');

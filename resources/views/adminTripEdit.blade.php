@@ -12,31 +12,31 @@
         @param RID-->
         <div class="col-md-4 well">
             <h2>Reisebeschrieb</h2>
-            <form role="form">
-
+            <form role="form" method="POST" action="{{url('admin/save')}}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label for="destination">Zielort</label>
-                    <input class="form-control" id="destination" placeholder="Zielort"></textarea>
+                    <input class="form-control" id="destination" name="destination" placeholder="Zielort" @if(isset($trip)) value="{{$trip->destination}}" @endif>
                 </div>
                 <div class="form-group">
-                    <label for="departs">Abfahrtsort</label>
-                    <input class="form-control" id="departs" placeholder="Abfarhtsort"></textarea>
+                    <label for="depart">Abfahrtsort</label>
+                    <input class="form-control" id="depart" name="depart" placeholder="Abfarhtsort" @if(isset($trip)) value="{{$trip->depart}}" @endif>
                 </div>
                 <div class="form-group">
-                    <label for="startdate">Startdatum</label>
-                    <input type="date" class="from-control" id="startdate" placeholder="Startdatum">
+                    <label for="startDate">Startdatum</label>
+                    <input type="date" class="from-control" id="startDate" name="startDate" placeholder="Startdatum" @if(isset($trip)) value="{{date('Y-m-d', strtotime($trip->startDate))}}" @endif>
                 </div>
                 <div class="form-group">
-                    <label for="enddate">Enddatum</label>
-                    <input type="date" class="from-control" id="enddate" placeholder="Enddatum">
+                    <label for="endDate">Enddatum</label>
+                    <input type="date" class="from-control" id="endDate" name="endDate" placeholder="Enddatum" @if(isset($trip)) value="{{date('Y-m-d', strtotime($trip->endDate))}}" @endif>
                 </div>
                 <div class="form-group">
-                    <label for="price">Preis</label>
-                    <input type="number" class="form-control" id="price" placeholder="Preis">
+                    <label for="preis">Preis</label>
+                    <input type="number" class="form-control" id="preis" name="preis" placeholder="Preis" @if(isset($trip)) value="{{$trip->preis}}" @endif>
                 </div>
                 <div class="form-group">
                     <label for="description">Beschreibung</label>
-                    <textarea class="form-control" id="description" placeholder="Beschreibung einfügen"></textarea>
+                    <textarea class="form-control" id="description" name="description" placeholder="Beschreibung einfügen">@if(isset($trip)){{$trip->description}}@endif</textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Änderungen speichern</button>
             </form>
@@ -51,34 +51,20 @@
                 <thead>
                     <tr>
                         <th>Buchungsnummer</th>
-                        <th>Vorname</th>
-                        <th>Nachname</th>
+                        <th>Name</th>
                         <th>Personen</th>
                         <th/>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($bookings as $booking)
                     <tr>
-                        <td>0001</td>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>2</td>
-                        <td><span class="glyphicon glyphicon-remove"></span></td>
+                        <td>{{$booking->id}}</td>
+                        <td>{{$booking->name}}</td>
+                        <td>{{$booking->countPasanger}}</td>
+                        <td><a href="{{url('deleteBooks/'.$booking->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
                     </tr>
-                    <tr>
-                        <td>0002</td>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>2</td>
-                        <td><span class="glyphicon glyphicon-remove"></span></td>
-                    </tr>
-                    <tr>
-                        <td>0003</td>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>1</td>
-                        <td><span class="glyphicon glyphicon-remove"></span></td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -99,30 +85,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($bills as $bill)
                     <tr>
                         <td>0001</td>
                         <td>Hotel</td>
                         <td>Bellevue</td>
                         <td>200</td>
                         <td>Essen</td>
-                        <td><span class="glyphicon glyphicon-remove"></span></td>
+                        <td><a href="{{url('deleteBooks/'.$booking->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
                     </tr>
-                    <tr>
-                        <td>0002</td>
-                        <td>Bus</td>
-                        <td>Frank</td>
-                        <td>400</td>
-                        <td>Reifenwechsel</td>
-                        <td><span class="glyphicon glyphicon-remove"></span></td>
-                    </tr>
-                    <tr>
-                        <td>0003</td>
-                        <td>Bus</td>
-                        <td>Ursi Putzer</td>
-                        <td>100</td>
-                        <td>Reinigung</td>
-                        <td><span class="glyphicon glyphicon-remove"></span></td>
-                    </tr>
+                    @endforeach
                     <!--Hier wird die Summe der Ausgaben ausgegeben-->
                     <tr>
                         <th>Total</th>
@@ -206,7 +178,7 @@
         <div class="col-md-4 well">
             <h2>Optionen</h2>
             <button type="button" class="btn btn-info">Drucken</button>
-            <button type="button" class="btn btn-danger">Reise absagen</button>
+            <a href="{{url('admin/deleteTrip/{id}')}}" class="btn btn-danger">Reise absagen</a>
             <button type="button" class="btn btn-success">Reise klonen</button>
         </div>
 
