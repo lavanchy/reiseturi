@@ -22,7 +22,7 @@ class HomeController extends Controller
          $trip = Trip::findOrFail($id);
          $user = User::find(1); // TODOget curent user
          if ($trip::freeSets(1)){
-              return view ('registration', compact($trip), compact($user));
+              return view ('registration',['trips' => $trips], ['user'=> $user]);
          }
          return view ('startpage', ['trips'=>$trips]);// TODO SRY over boocked
         

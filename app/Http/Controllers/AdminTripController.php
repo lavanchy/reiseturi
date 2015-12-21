@@ -39,10 +39,11 @@ class AdminTripController extends Controller {
     public function createBill() {
         $input = Requests::all();
 
-        $b = App\Bill::updateOrCreate($input);
+        $b = new App\Bill($input);
+        $b -> save();
         $trip = Trip::find($b::trip_id);
 
-        return view('adminTripEdit', ['trip'=>$trip]);
+        return view('adminTripEdit', ['trip' => $trip]);
     }
 
 //*/
@@ -51,7 +52,7 @@ class AdminTripController extends Controller {
         //CK Rechtschreibung korrigert
         $attributes = Trip::find($id);
         $t = $attributes__clone();
-        return view('adminTripEdit', compact($t));
+        return view('adminTripEdit', ['trip' => $t]);
     }
 
     public function deletTrip($id) {
@@ -60,11 +61,11 @@ class AdminTripController extends Controller {
     }
 
     public function deletBill($id) {
-        $bill = \App\Bill::findOrNew($id);
+        $bill = \App\Bill::find($id);
         $tripID = $bill::trip_id;
         \App\Bill::destroy($id);
-        $trip = Trip::findOrNew($tripID);
-        return view('adminTripEdit', ['trip'=>$trip]);
+        $trip = Trip::find($tripID);
+        return view('adminTripEdit', ['trip' => $trip]);
     }
     
      public function editTrips($id) {

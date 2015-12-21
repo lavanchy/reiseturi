@@ -26,7 +26,10 @@ class AdminOverviewController extends Controller {
         return view('adminOverview', ['trips' => $trips]);
     }
 
-   
+    public function editTrips($id) {
+        $trip = Trip::findOrDie($id);
+        return view('adminTripEdit', ['trip' => $trip]);
+    }
 
     public function newTrips() {
         return view('adminTripEdit');

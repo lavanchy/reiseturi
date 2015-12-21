@@ -10,7 +10,8 @@ class BookingController extends Controller {
 
     public function book() {
         $input = Requests::all();
-        $booking = App\Booking::updateOrCreate($input);
+        $booking = new App\Booking($input);
+        $booking -> push();
         $userID = $booking::userID;
         returnToUserBooking($userID);
     }
@@ -32,7 +33,7 @@ class BookingController extends Controller {
                 $userBookings::add($b);
             }
         }
-        return view('customerLogin', compact($userBookings)); // TODO Corect view
+        return view('customerLogin', ['bookings' => $userBookings]); // TODO Corect view
     }
 
 }
