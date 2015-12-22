@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Trip;
-/*use Requests;*/
+use App\Booking;
+use Log;
+
+/* use Requests; */
 
 class AdminOverviewController extends Controller {
     /* TODOS
@@ -20,19 +23,21 @@ class AdminOverviewController extends Controller {
 
     public function getAdminTrips() {
         $trips = Trip::all();
-        /*foreach ($trips as $t){
-            $t::numberOfPassenger();
-        }*/
-        return view('adminOverview', ['trips' => $trips]);
+        $passengers;
+        Log::debug($trips);
+        foreach ($trips as $t) {
+             $p = $t::numberOfPassenger($t->id);
+            Log::debug($p);
+           $passengers::add($p);
+            Log::debug($passengers);
+           
+        }
+        return view('adminOverview', ['trips' => $trips, 'passengers' => $passengers]);
     }
 
     public function editTrips($id) {
         $trip = Trip::findOrDie($id);
         return view('adminTripEdit', ['trip' => $trip]);
     }
-
-    
-
-
 
 }

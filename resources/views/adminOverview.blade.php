@@ -20,8 +20,8 @@ der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeit
             </tr>
         </thead>
         <tbody>
-            @foreach ($trips as $trip)
-            @include ('templates.content.overview', ['trip'=>$trip])
+            @for ($i=0;count($trip)>$i;$i++)
+            @include ('templates.content.overview', ['trip'=>$trip->get($i), 'passengers'=>$passengers->get($i)])
             <!-- Overview beinhaltet folgenden Code
             <tr class="info"><!--TODO anpassen an anzahl besucher- ->
                 <td>{{$trip->id}}</td>
@@ -32,7 +32,7 @@ der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeit
                 <td>10</td>
                 <td><button type="button" class="btn btn-default">Bearbeiten</button></td>
             </tr>-->
-            @endforeach
+            @endfor
 <!--Diese Tabelle zeigt nur an, dass eine neue Reise erstellt werden soll.-->
             <tr class="info">
                 <td></td>

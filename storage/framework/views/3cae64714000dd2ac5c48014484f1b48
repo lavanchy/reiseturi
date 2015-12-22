@@ -6,7 +6,7 @@
 <div class="container">
     <!--Das erste Tab soll generiert werden, d.h. für jede Reise, die geöffnet wurde, soll ein neuer Tab entstehen.
         Der zweite Tab soll auf die AdminOverview-Seite führe, damit dort eine weitere bereits bestehende oder eine neue Reise erstellt werden kann-->
-    <h2>Reise nach Name bearbeiten</h2>
+    <h2>Reise nach <?php echo e($trip->destination); ?> bearbeiten</h2>
         <!--Hier wird der Reisebeschrieb eingefügt, entweder manuell vom Nutzer bei Neuerstellung oder
         durch Abruf aus der Datenbank bei Bearbeitung oder Klonen
         @param  RID-->

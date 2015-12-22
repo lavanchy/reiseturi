@@ -17,7 +17,7 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <div class="navbar-brand" href="{{url('/')}}"><img  src="images/logo.jpg" height="30" width="35"/></div> <!--Logo-->
+                    <div class="navbar-brand" href="{{url('/')}}"><img src="images/logo.jpg" height="30" width="35"/></div> <!--Logo-->
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"> <!--zu schnellen Übersichtszwecken beim Testing wird dies folgendermassen angezeigt-->

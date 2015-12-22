@@ -76,11 +76,11 @@ Route::get('/adminOverview', 'AdminOverviewController@getAdminTrips');
 //AdminTripC.
 //CK: Verzeichnis geändert
 Route::get('/admin/newTrip', 'AdminTripController@newTrip'); //läuft
-Route::post('/admin/save/{id}', 'AdminTripController@saveTrip'); //läuft
-Route::post('/admin/printPasanger', 'AdminTripController@printPasangers');
+Route::post('/admin/save/{id}', 'AdminTripController@saveTrip'); //läuft teilweise (return view)
+Route::post('/admin/printPassenger', 'AdminTripController@printPassengers');
 Route::post('/admin/bill/{id}', 'AdminTripController@createBill'); //läuft
 Route::get('/admin/deleteBill/{id}/{billID}', 'AdminTripController@deleteBill'); //läuft   
-Route::post('/admin/cloneTrip', 'AdminTripController@cloneTrip'); 
+Route::post('/admin/cloneTrip', 'AdminTripController@cloneTrip'); //(return view)
 Route::get('/admin/deleteTrip/{id}/{tripID}', 'AdminTripController@deleteTrip'); //läuft
 Route::get('/admin/editTrip/{id}', 'AdminTripController@editTrips'); //läuft
 
