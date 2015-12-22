@@ -144,7 +144,6 @@
         Reise klonen kopiert den Reisebeschrieb in eine neue Reise-->
         <div class="col-md-6 well hidden-print">
             <h2>Optionen</h2>
-            <button type="button" class="btn btn-info">Drucken</button>
             <a href="{{url('admin/deleteTrip/'.$trip->id.'/'.$trip->id)}}" class="btn btn-danger">Reise absagen</a>
             <a href="{{url('admin/cloneTrip/'.$trip->id)}}" class="btn btn-success">Reise klonen</a>
         </div>
