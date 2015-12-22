@@ -11,13 +11,21 @@ use Log;
 
 
 class AdminTripController extends Controller {
-
-    public function saveTrip(Request $request) {
-        //TODO get post elements
+    
+    
+    public function newTrip() {
         $trip = new Trip;
+        if (!$trip->save()){
+            App::abort(500,'Error');
+        }
+        return redirect('admin/editTrip/'.$trip->id);
+    }
+
+    public function saveTrip(Request $request, $id) {
+        //TODO get post elements
+        $trip = Trip::findOrFail($id);
         //$input = $request->except('_token');
         //$trip = Trip::updateOrCreate($input);
-        Log::debug($request);
         $trip->destination = $request->destination;
         $trip->depart = $request->depart;
         $trip->startDate = $request->startDate;
@@ -36,43 +44,60 @@ class AdminTripController extends Controller {
         return view('adminOverview'); // Feedbacks? with view
     }
 
-    public function createBill() {
-        $input = Requests::all();
+    public function createBill(Request $request, $id) {
+        //$input = Requests::all();
 
-        $b = new App\Bill($input);
+        $b = new Bill;
+        $b->trip_id = $id;
+        $b->invoicingParty = $request->invoicingParty;
+        $b->amountCHF = $request->amountCHF;
+        $b->date = $request->date;
+        $b->note = $request->note;
         $b -> save();
-        $trip = Trip::find($b::trip_id);
+        
 
-        return view('adminTripEdit', ['trip' => $trip]);
+        return redirect('admin/editTrip/'.$id);
     }
 
 //*/
 
-    public function cloneTrip($id) {
-        //CK Rechtschreibung korrigert
-        $attributes = Trip::find($id);
-        $t = $attributes__clone();
-        return view('adminTripEdit', ['trip' => $t]);
+    public function cloneTrip(Request $request) {
+        //TODO get post elements
+        $trip = new Trip;
+        //$input = $request->except('_token');
+        //$trip = Trip::updateOrCreate($input);
+        Log::debug($request);
+        $trip->destination = $request->destination;
+        $trip->depart = $request->depart;
+        $trip->startDate = $request->startDate;
+        $trip->endDate = $request->endDate;
+        $trip->preis = $request->preis;
+        $trip->description = $request->description;
+        if (!$trip->save()){
+            App::abort(500,'Error');
+        }
+        return redirect('admin/editTrip'.$trip->id);
+        //return view('adminTripEdit', ['trip'=>$trip]);
     }
 
-    public function deletTrip($id) {
-        Trip::destroy($id);
-        return view('adminOverview');
+    public function deleteTrip($id, $tripID) {
+        $deletedRows = Trip::where('id', $tripID)->delete();
+        return redirect('adminOverview');
     }
-
-    public function deletBill($id) {
-        $bill = \App\Bill::find($id);
-        $tripID = $bill::trip_id;
-        \App\Bill::destroy($id);
-        $trip = Trip::find($tripID);
-        return view('adminTripEdit', ['trip' => $trip]);
+    
+    public function deleteBill($id, $billID) {
+        $deletedRows = Bill::where('id', $billID)->delete();
+        return redirect('admin/editTrip/'.$id);
     }
     
      public function editTrips($id) {
         $trip = Trip::findOrFail($id);
         $bookings = Booking::where('trip_id',$id)->get();
         $bills = Bill::where('trip_id',$id)->get();
-        return view('adminTripEdit', ['trip'=>$trip, 'bookings'=>$bookings, 'bills'=>$bills]);
+        $billSum = Bill::where('trip_id',$id)->sum('amountCHF');
+        $countPassenger = Booking::where('trip_id',$id)->sum('countPasanger');
+        $income = $countPassenger*$trip->preis;
+        return view('adminTripEdit', ['trip'=>$trip, 'bookings'=>$bookings, 'bills'=>$bills, 'billSum'=>$billSum, 'income'=>$income]);
     }
 
 }

@@ -17,15 +17,15 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{url('/')}}"><img src="images/logo.jpg" height="30" width="35"/></a> <!--Logo-->
+                    <div class="navbar-brand" href="{{url('/')}}"><img  src="images/logo.jpg" height="30" width="35"/></div> <!--Logo-->
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"> <!--zu schnellen Übersichtszwecken beim Testing wird dies folgendermassen angezeigt-->
                         <li><a href="{{url('/')}}">Home</a></li>
                         <li><a href="{{url('customerLogin')}}">Profil</a></li>
-                        <li><a href="{{url('registration')}}">Registrieren</a></li>
+                        @if (Auth::check())
                         <li><a href="{{url('adminOverview')}}">AdminOverview</a></li>
-                        <li><a href="{{url('adminTripEdit')}}">AdminTripEdit</a></li>
+                        @endif
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>

@@ -13,11 +13,9 @@ der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeit
                 <th>Reisenummer</th>
                 <th>Destination</th>
                 <th>Abfahrtsort</th>
-                <th>Hotel</th>
                 <th>Hinfahrt</th>
                 <th>Rückfahrt</th>
                 <th>Buchungen</th>
-
                 <th></th>
             </tr>
         </thead>
@@ -29,7 +27,6 @@ der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeit
                 <td>{{$trip->id}}</td>
                 <td>{{$trip->destination}}</td>
                 <td>Zürich</td> <!--TODO, update database with Depart- ->
-                <td>Bellvue</td> 
                 <td>{{$trip->startDate}}</td>
                 <td>{{$trip->endDate}}</td>
                 <td>10</td>
@@ -44,8 +41,7 @@ der Admin kann sie öffnen und eine neue Reise erstellen. Die effektive Bearbeit
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td><button type="button" class="btn btn-default">Neue Reise</button></td>
+                <td><a href="{{url('admin/newTrip')}}" class="btn btn-default">Neue Reise</a></td>
             </tr>
         </tbody>
     </table>

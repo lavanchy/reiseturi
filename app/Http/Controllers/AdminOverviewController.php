@@ -31,9 +31,7 @@ class AdminOverviewController extends Controller {
         return view('adminTripEdit', ['trip' => $trip]);
     }
 
-    public function newTrips() {
-        return view('adminTripEdit');
-    }
+    
 
 
 

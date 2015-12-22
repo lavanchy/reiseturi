@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model {
 
-    protected $fillabal = array('name', 'countPasanger', 'paymentTyp', 'paymentStatus', 'note', 'price', 'userID');
+    protected $fillable = array('id', 'name', 'countPasanger', 'paymentTyp', 'paymentStatus', 'note', 'price', 'trip_id');
 
     /**
      * Grab all 

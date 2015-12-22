@@ -12,7 +12,7 @@
         @param RID-->
         <div class="col-md-4 well">
             <h2>Reisebeschrieb</h2>
-            <form role="form" method="POST" action="{{url('admin/save')}}">
+            <form role="form" method="POST" action="{{url('admin/save/')}}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label for="destination">Zielort</label>
@@ -62,7 +62,7 @@
                         <td>{{$booking->id}}</td>
                         <td>{{$booking->name}}</td>
                         <td>{{$booking->countPasanger}}</td>
-                        <td><a href="{{url('deleteBooks/'.$booking->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        <td><a href="{{url('admin/deleteBooks/'.$booking->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -78,7 +78,7 @@
                     <tr>
                         <th>Rechnungsnummer</th>
                         <th>Art</th>
-                        <th>Gläubiger</th>
+                        <th>Datum</th>
                         <th>Kosten</th>
                         <th>Beschreibung</th>
                         <th/>
@@ -87,20 +87,20 @@
                 <tbody>
                     @foreach ($bills as $bill)
                     <tr>
-                        <td>0001</td>
-                        <td>Hotel</td>
-                        <td>Bellevue</td>
-                        <td>200</td>
-                        <td>Essen</td>
-                        <td><a href="{{url('deleteBooks/'.$booking->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        <td>{{$bill->id}}</td>
+                        <td>{{$bill->invoicingParty}}</td>
+                        <td>{{$bill->date}}</td>
+                        <td>{{$bill->amountCHF}}</td>
+                        <td>{{$bill->note}}</td>
+                        <td><a href="{{url('admin/deleteBill/'.$trip->id.'/'.$bill->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
                     </tr>
                     @endforeach
                     <!--Hier wird die Summe der Ausgaben ausgegeben-->
                     <tr>
                         <th>Total</th>
                         <th></th>
-                        <th>Reise Wien</th>
-                        <th>700</th>
+                        <th>Reise {{$trip->destination}}</th>
+                        <th>{{$billSum}}</th>
                         <th></th>
                     </tr>
                 </tbody>
@@ -118,26 +118,23 @@
                             <h4 class="modal-title">Bitte füllen Sie das Formular aus</h4>
                         </div>
                         <div class="modal-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label for="billnr">Rechnungsnummer</label>
-                                    <input class="form-control" id="billnr" placeholder="Rechnungsnummer"></textarea>
-                                </div>
+                            <form role="form" method="POST" action="{{url('admin/bill/'.$trip->id)}}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label for="type">Art</label>
-                                    <input class="form-control" id="type" placeholder="Hotel, Bus, etc."></textarea>
+                                    <input class="form-control" id="type" name="invoicingParty"placeholder="Hotel, Bus, etc."></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="creditor">Gläubiger</label>
-                                    <input class="form-control" id="creditor" placeholder="Name der Person/Firma">
+                                    <label for="creditor">Datum</label>
+                                    <input type="date" class="form-control" id="creditor" name="date" placeholder="Name der Person/Firma">
                                 </div>
                                 <div class="form-group">
                                     <label for="cost">Kosten</label>
-                                    <input type="number" class="form-control" id="cost" placeholder="in Franken">
+                                    <input type="number" class="form-control" min="0" id="cost" name="amountCHF" placeholder="in Franken">
                                 </div>
                                 <div class="form-group">
                                     <label for="billDescription">Beschreibung</label>
-                                    <input class="form-control" id="billDescription" placeholder="Beschreibung">
+                                    <input class="form-control" id="billDescription" name="note" placeholder="Beschreibung">
                                 </div>
                                 <button type="submit" class="btn btn-default">Speichern</button>
                             </form>
@@ -156,17 +153,17 @@
                 <tbody>
                     <tr>
                         <td>Ausgaben</td>
-                        <td>700</td>
+                        <td>{{$billSum}}</td>
                     </tr>
                     <tr>
                         <td>Einnahmen</td>
-                        <td>1000</td>
+                        <td>{{$income}}</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Gewinn</th>
-                        <th>300</th>
+                        <th>{{$income-$billSum}}</th>
                     </tr>
                 </tfoot>
             </table>
@@ -178,8 +175,8 @@
         <div class="col-md-4 well">
             <h2>Optionen</h2>
             <button type="button" class="btn btn-info">Drucken</button>
-            <a href="{{url('admin/deleteTrip/{id}')}}" class="btn btn-danger">Reise absagen</a>
-            <button type="button" class="btn btn-success">Reise klonen</button>
+            <a href="{{url('admin/deleteTrip/'.$trip->id.'/'.$trip->id)}}" class="btn btn-danger">Reise absagen</a>
+            <a href="{{url('admin/cloneTrip/')}}" class="btn btn-success">Reise klonen</a>
         </div>
 
 

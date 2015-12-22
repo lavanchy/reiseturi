@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bill extends Model
 {
-    protected $fillabal = array('invoicingParty', 'amountCHF','date', 'note', 'trip_id');
+    protected $fillable = array('invoicingParty', 'amountCHF','date', 'note', 'trip_id');
     
     /**
      * to with trip the bill belongs

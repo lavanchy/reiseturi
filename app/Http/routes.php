@@ -47,9 +47,9 @@ Route::get('/auth/password', function(){
  * 09.11.15
  */
 // Authentication routes...
-Route::get('/auth/login', 'Auth\AuthController@getLogin');
-Route::post('/auth/login', 'Auth\AuthController@postLogin');
-Route::get('/auth/logout', 'Auth\AuthController@getLogout');
+Route::get('/auth/login', 'Auth\AuthController@getLogin'); //läuft
+Route::post('/auth/login', 'Auth\AuthController@postLogin'); //läuft
+Route::get('/auth/logout', 'Auth\AuthController@getLogout'); //läuft
 
 // Registration routes...
 Route::get('/auth/register', 'Auth\AuthController@getRegister');
@@ -69,19 +69,20 @@ Route::get('/login', 'HomeController@logIn');// solte es nicht eines der Auth vo
 //AdminOverViewC.
 //CK: Verzeichnis geändert
 Route::get('/adminOverview', 'AdminOverviewController@getAdminTrips');
-Route::post('/admin/newTrip', 'AdminOverviewController@newTrips');
+
 
 
 
 //AdminTripC.
 //CK: Verzeichnis geändert
-Route::post('/admin/save', 'AdminTripController@saveTrip');
+Route::get('/admin/newTrip', 'AdminTripController@newTrip'); //läuft
+Route::post('/admin/save/{id}', 'AdminTripController@saveTrip'); //läuft
 Route::post('/admin/printPasanger', 'AdminTripController@printPasangers');
-Route::post('/admin/bill', 'AdminTripController@createBill');
-Route::post('/admin/deleteBill/{id}', 'AdminTripController@deleteBill');        
-Route::post('/admin/cloneTrip/{id}', 'AdminTripController@cloneTrip'); 
-Route::post('/admin/deleteTrip/{id}', 'AdminTripController@deleteTrip'); 
-Route::get('/admin/editTrip/{id}', 'AdminTripController@editTrips');
+Route::post('/admin/bill/{id}', 'AdminTripController@createBill'); //läuft
+Route::get('/admin/deleteBill/{id}/{billID}', 'AdminTripController@deleteBill'); //läuft   
+Route::post('/admin/cloneTrip', 'AdminTripController@cloneTrip'); 
+Route::get('/admin/deleteTrip/{id}/{tripID}', 'AdminTripController@deleteTrip'); //läuft
+Route::get('/admin/editTrip/{id}', 'AdminTripController@editTrips'); //läuft
 
 //BookingC.
 //CK: Verzeichnis geändert
