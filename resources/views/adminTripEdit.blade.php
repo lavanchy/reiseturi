@@ -4,15 +4,14 @@
 <!--content -->
 @section ('content')
 <div class="container">
-    <!--Das erste Tab soll generiert werden, d.h. für jede Reise, die geöffnet wurde, soll ein neuer Tab entstehen.
-        Der zweite Tab soll auf die AdminOverview-Seite führe, damit dort eine weitere bereits bestehende oder eine neue Reise erstellt werden kann-->
+    
     <h2>Reise nach {{$trip->destination}} bearbeiten</h2>
         <!--Hier wird der Reisebeschrieb eingefügt, entweder manuell vom Nutzer bei Neuerstellung oder
         durch Abruf aus der Datenbank bei Bearbeitung oder Klonen
         @param RID-->
-        <div class="col-md-4 well">
+        <div class="col-md-12 well">
             <h2>Reisebeschrieb</h2>
-            <form role="form" method="POST" action="{{url('admin/save/')}}">
+            <form role="form" method="POST" action="{{url('admin/save/'.$trip->id)}}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label for="destination">Zielort</label>
@@ -38,14 +37,15 @@
                     <label for="description">Beschreibung</label>
                     <textarea class="form-control" id="description" name="description" placeholder="Beschreibung einfügen">@if(isset($trip)){{$trip->description}}@endif</textarea>
                 </div>
-                <button type="submit" class="btn btn-default">Änderungen speichern</button>
+                <button type="submit" class="btn btn-default hidden-print">Änderungen speichern</button>
             </form>
 
         </div>
+       
         <!--Hier wird die Passagierliste angezeigt. Diese ist bei einer neuen Reise leer, bei bereits erstellter Reise (bearbeiten,klonen) wird DB abgerufen.
         AUsserdem können Teilnehmer gelöscht werden.
         @param BID-->
-        <div class="col-md-8 well">
+        <div class="col-md-6 well">
             <h2>Passagierliste</h2>
             <table class="table table-striped">
                 <thead>
@@ -62,16 +62,19 @@
                         <td>{{$booking->id}}</td>
                         <td>{{$booking->name}}</td>
                         <td>{{$booking->countPasanger}}</td>
-                        <td><a href="{{url('admin/deleteBooks/'.$booking->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        <td><a class="hidden-print" href="{{url('admin/deletePassenger/'.$trip->id.'/'.$booking->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            <!-- Der Button für Modal, um Zahlung hinzuzufügen -->
+            <button type="button" class="btn btn-info hidden-print" data-toggle="modal" data-target="#PassengerModal">Zahlung hinzüfügen</button>
+            
         </div>
         <!--Hier werden die Ausgaben manuell durch den Admin eingefügt, es werden bei Klonen nie Daten übernommen, bei Bearbeitung werden sie von DB abgerufen.
         Ausserdem könnne hier Zahlungen hinzugefügt werden, indem beim Button-Klick ein Modal mit einem Formular erscheint.
         @param BillID--> 
-        <div id="ausgaben" class="col-md-8 well">
+        <div id="ausgaben" class="col-md-6 well">
             <h2>Ausgaben</h2>
             <table class="table table-striped">
                 <thead>
@@ -92,7 +95,7 @@
                         <td>{{$bill->date}}</td>
                         <td>{{$bill->amountCHF}}</td>
                         <td>{{$bill->note}}</td>
-                        <td><a href="{{url('admin/deleteBill/'.$trip->id.'/'.$bill->id)}}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        <td><a class="hidden-print" href="{{url('admin/deleteBill/'.$trip->id.'/'.$bill->id)}}"><span class="glyphicon glyphicon-remove "></span></a></td>
                     </tr>
                     @endforeach
                     <!--Hier wird die Summe der Ausgaben ausgegeben-->
@@ -106,9 +109,79 @@
                 </tbody>
             </table>
             <!-- Der Button für Modal, um Zahlung hinzuzufügen -->
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#BillModal">Zahlung hinzüfügen</button>
-            <!-- Zahlung Modal -->
-            <div class="modal fade" id="BillModal" role="dialog">
+            <button type="button" class="btn btn-info hidden-print" data-toggle="modal" data-target="#BillModal">Zahlung hinzüfügen</button>
+            
+            
+        </div>
+        
+        <!-- Hier werden die Einnahmen und die Ausgaben zusammengeführt.
+        Die Ausgaben werden als Summe ausgegeben
+        Die Einnahmen berechnet sich aus Preis*AnzahlBuchungen-->
+        <div class="col-md-6 well">
+            <h2>Bilanz</h2>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Ausgaben</td>
+                        <td>{{$billSum}}</td>
+                    </tr>
+                    <tr>
+                        <td>Einnahmen</td>
+                        <td>{{$income}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Gewinn</th>
+                        <th>{{$income-$billSum}}</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <!-- Hier werden die Optionen für den Admin aufgezählt
+        Drucken erzeugt ein PDF mit der gesamten Reiseübersicht
+        Reise absagen löscht die RID
+        Reise klonen kopiert den Reisebeschrieb in eine neue Reise-->
+        <div class="col-md-6 well hidden-print">
+            <h2>Optionen</h2>
+            <button type="button" class="btn btn-info">Drucken</button>
+            <a href="{{url('admin/deleteTrip/'.$trip->id.'/'.$trip->id)}}" class="btn btn-danger">Reise absagen</a>
+            <a href="{{url('admin/cloneTrip/'.$trip->id)}}" class="btn btn-success">Reise klonen</a>
+        </div>
+
+        
+        <!-- Passagier Modal -->
+            <div class="modal fade" id="PassengerModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Formular, um Passagier hinzuzufügen-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Bitte füllen Sie das Formular aus</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form role="form" method="POST" action="{{url('admin/passenger/'.$trip->id)}}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" id="name" name="name"placeholder="Vor- und Nachname"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="countPassenger">Anzahl Personen</label>
+                                    <input type="number" min="0" class="form-control" id="countPassenger" name="countPassenger" placeholder="Anzahl Personen">
+                                </div>
+                                <button type="submit" class="btn btn-default">Speichern</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        
+        
+        <!-- Zahlung Modal -->
+        <div class="modal fade" id="BillModal" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Formular, um Zahlung hinzuzufügen-->
@@ -143,42 +216,5 @@
 
                 </div>
             </div>
-        </div>
-        <!-- Hier werden die Einnahmen und die Ausgaben zusammengeführt.
-        Die Ausgaben werden als Summe ausgegeben
-        Die Einnahmen berechnet sich aus Preis*AnzahlBuchungen-->
-        <div class="col-md-4 well">
-            <h2>Bilanz</h2>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>Ausgaben</td>
-                        <td>{{$billSum}}</td>
-                    </tr>
-                    <tr>
-                        <td>Einnahmen</td>
-                        <td>{{$income}}</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Gewinn</th>
-                        <th>{{$income-$billSum}}</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <!-- Hier werden die Optionen für den Admin aufgezählt
-        Drucken erzeugt ein PDF mit der gesamten Reiseübersicht
-        Reise absagen löscht die RID
-        Reise klonen kopiert den Reisebeschrieb in eine neue Reise-->
-        <div class="col-md-4 well">
-            <h2>Optionen</h2>
-            <button type="button" class="btn btn-info">Drucken</button>
-            <a href="{{url('admin/deleteTrip/'.$trip->id.'/'.$trip->id)}}" class="btn btn-danger">Reise absagen</a>
-            <a href="{{url('admin/cloneTrip/')}}" class="btn btn-success">Reise klonen</a>
-        </div>
-
-
     </div>
     @stop

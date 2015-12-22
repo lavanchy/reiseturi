@@ -5,6 +5,6 @@
     <td>{{$trip->depart}}</td> <!--TODO, update database with Depart-->
     <td>{{$trip->startDate}}</td>
     <td>{{$trip->endDate}}</td>
-    <td>{{$passengers}}</td>
+    <td>{{$booking->countPasanger}}</td>
     <td><a href="{{url('admin/editTrip/'.$trip->id)}}"class="btn btn-default">Bearbeiten</a></td>
 </tr>

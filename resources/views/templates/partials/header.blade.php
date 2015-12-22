@@ -22,7 +22,6 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"> <!--zu schnellen Übersichtszwecken beim Testing wird dies folgendermassen angezeigt-->
                         <li><a href="{{url('/')}}">Home</a></li>
-                        <li><a href="{{url('customerLogin')}}">Profil</a></li>
                         @if (Auth::check())
                         <li><a href="{{url('adminOverview')}}">AdminOverview</a></li>
                         @endif
@@ -60,7 +59,6 @@
                                         <label><input type="checkbox"> Remember me</label>
                                     </div>
                                     <button type="submit" class="btn btn-default" >Submit</button>
-                                    <a href="{{url('auth/password')}}">Forgot Your Password?</a>
                                 </form>
 
 

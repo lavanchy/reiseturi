@@ -29,18 +29,18 @@ class Trip extends Model {
         
     }
     
-    public static function numberOfPassenger($id){
-        //$amount =0;
-       /* $trips = Trip::all();
+    public function numberOfPassenger(){
+        $amount =0;
+       // $trips = Trip::all();
         $bookings =  Booking::all();
         foreach ($bookings as $b){
             if( $b->tripID == $this->id){
              $amount += $b->countPasanger;  
             }
-        }*/
-        $passengers = Booking::where('trip_id',$id)->sum('countPasanger');
-        //$this->passenger =$passengers;
-        return $passengers;
+        }
+        
+        $this->passenger =$bookings;
+        return $amount;
     }
     
      public function fethBills(){

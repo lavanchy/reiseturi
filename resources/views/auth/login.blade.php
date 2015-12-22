@@ -55,8 +55,6 @@ source: https://gist.github.com/evercode1/bc2cfc318bb49313b47f
                                 <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
                                     Login
                                 </button>
-
-                                <a href="{{url('auth/password')}}">Forgot Your Password?</a>
                             </div>
                         </div>
                     </form>

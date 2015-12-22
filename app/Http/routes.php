@@ -76,18 +76,20 @@ Route::get('/adminOverview', 'AdminOverviewController@getAdminTrips');
 //AdminTripC.
 //CK: Verzeichnis geändert
 Route::get('/admin/newTrip', 'AdminTripController@newTrip'); //läuft
-Route::post('/admin/save/{id}', 'AdminTripController@saveTrip'); //läuft teilweise (return view)
-Route::post('/admin/printPassenger', 'AdminTripController@printPassengers');
+Route::post('/admin/save/{id}', 'AdminTripController@saveTrip'); //läuft
+Route::post('/admin/printPassenger', 'AdminTripController@printPassengers'); //muss erstellt werden
 Route::post('/admin/bill/{id}', 'AdminTripController@createBill'); //läuft
-Route::get('/admin/deleteBill/{id}/{billID}', 'AdminTripController@deleteBill'); //läuft   
-Route::post('/admin/cloneTrip', 'AdminTripController@cloneTrip'); //(return view)
+Route::post('/admin/passenger/{id}', 'AdminTripController@createPassenger'); //läuft
+Route::get('/admin/deleteBill/{id}/{billID}', 'AdminTripController@deleteBill'); //läuft
+Route::get('/admin/deletePassenger/{id}/{bookingID}', 'AdminTripController@deletePassenger'); //läuft
+Route::get('/admin/cloneTrip/{id}', 'AdminTripController@cloneTrip'); // BUTTON MUSS FORM VON SAVETRIP ÜBERNEHMEN
 Route::get('/admin/deleteTrip/{id}/{tripID}', 'AdminTripController@deleteTrip'); //läuft
 Route::get('/admin/editTrip/{id}', 'AdminTripController@editTrips'); //läuft
 
 //BookingC.
 //CK: Verzeichnis geändert
-Route::post('/books', 'BookingController@book');
-Route::post('/deleteBooks/{id}', 'BookingController@deleteBooking');
+Route::post('/books', 'BookingController@book'); //IST CREATEPASSENGER
+Route::post('/deleteBooks/{id}', 'BookingController@deleteBooking'); //IST DELETEPASSENGER
 
 //HeadC.
 

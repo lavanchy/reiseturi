@@ -124,8 +124,6 @@
                             <button type="button" class="btn btn-primary">
                                 Registrieren
                             </button>
-
-                            <a href="{{url('password/email')}}">Forgot Your Password?</a>
                         </div>
                     </div>
                 </form>

@@ -58,26 +58,34 @@ class AdminTripController extends Controller {
 
         return redirect('admin/editTrip/'.$id);
     }
+    
+    public function createPassenger(Request $request, $id) {
+        //$input = Requests::all();
+        
+        $passenger = new Booking;
+        $passenger->trip_id = $id;
+        $passenger->name = $request->name;
+        $passenger->countPasanger = $request->countPassenger;
+        $passenger -> save();
+        
+
+        return redirect('admin/editTrip/'.$id);
+    }
 
 //*/
 
-    public function cloneTrip(Request $request) {
-        //TODO get post elements
+    public function cloneTrip($id) {
         $trip = new Trip;
-        //$input = $request->except('_token');
-        //$trip = Trip::updateOrCreate($input);
-        Log::debug($request);
-        $trip->destination = $request->destination;
-        $trip->depart = $request->depart;
-        $trip->startDate = $request->startDate;
-        $trip->endDate = $request->endDate;
-        $trip->preis = $request->preis;
-        $trip->description = $request->description;
+        $tripToCopy = Trip::findOrFail($id);
+        $trip->destination = $tripToCopy->destination;
+        $trip->depart = $tripToCopy->depart;
+        $trip->startDate = $tripToCopy->startDate;
+        $trip->endDate = $tripToCopy->endDate;
+        $trip->description = $tripToCopy->description;
         if (!$trip->save()){
             App::abort(500,'Error');
         }
-        return redirect('admin/editTrip'.$trip->id);
-        //return view('adminTripEdit', ['trip'=>$trip]);
+        return redirect('admin/editTrip/'.$trip->id);
     }
 
     public function deleteTrip($id, $tripID) {
@@ -87,6 +95,11 @@ class AdminTripController extends Controller {
     
     public function deleteBill($id, $billID) {
         $deletedRows = Bill::where('id', $billID)->delete();
+        return redirect('admin/editTrip/'.$id);
+    }
+    
+    public function deletePassenger($id, $bookingID) {
+        $deletedRows = Booking::where('id', $bookingID)->delete();
         return redirect('admin/editTrip/'.$id);
     }
     
