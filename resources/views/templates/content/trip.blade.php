@@ -13,9 +13,9 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             @foreach($pics as $pic)
-            <div class="item @if($pic!=reset($pics)) active @endif">
+           <!-- <div class="item @if($pic!=reset($pics)) active @endif">
                 <img src="images/startpage/{{$pic}}.jpg" alt="Chania" width="800" height="400">
-            </div>
+            </div> -->
             @endforeach
         </div>
 
